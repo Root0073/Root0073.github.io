@@ -112,44 +112,40 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Algorithm/">
-                        Algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/10/22/%E6%B4%9B%E8%B0%B7P1563-%E7%8E%A9%E5%85%B7%E8%B0%9C%E9%A2%98/">
-                            洛谷P1563_玩具谜题
-                        </a>
-                    </h1>
+    
+    
+    <h2 class="post-title">
+        HDU百题2000_ASCII码排序
+    </h2>
+    <ul class="post-date">
+        <li>
+            2024-10-24
+        </li>
+        <li>
+            Root
+        </li>
+    </ul>
+    <div class="post-content">
+        <h1 id="题目简述"><a href="#题目简述" class="headerlink" title="题目简述"></a>题目简述</h1><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20241024113232.png"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h1><blockquote>
+<p>本题为基本的排序问题,难点在于未给出数据的个数,因此需要使用EOF对于字符串输入结束进行判断,最好使用getchar()函数或者scanf()函数获取字符直到获取到EOF结束,以三个为单位进行排序后输出</p>
+</blockquote>
+<h1 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">    char a, b, c;</span><br><span class="line">    char i;</span><br><span class="line">    while(scanf(&quot;%c%c%c&quot;, a, b, c) != EOF)&#123;</span><br><span class="line">        if (a &gt; b)&#123;</span><br><span class="line">            i = a;</span><br><span class="line">            a = b;</span><br><span class="line">            b = i;</span><br><span class="line">        &#125;</span><br><span class="line">        if (b &gt; c)&#123;</span><br><span class="line">            i = b;</span><br><span class="line">            b = c;</span><br><span class="line">            c = i;</span><br><span class="line">        &#125;</span><br><span class="line">        if (a &gt; c)&#123;</span><br><span class="line">            i = c;</span><br><span class="line">            c = a;</span><br><span class="line">            a = i;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; &quot; &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">        getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-                    <ul class="post-date">
-                        <li>
-                            October 22, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="https://cdn.luogu.com.cn/upload/image_hosting/7su06u3r.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/10/22/%E6%B4%9B%E8%B0%B7P1563-%E7%8E%A9%E5%85%B7%E8%B0%9C%E9%A2%98/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+<h1 id="重点分析"><a href="#重点分析" class="headerlink" title="重点分析"></a>重点分析</h1><ol>
+<li><p>getchar() 一次只能输入一个char类型的值,而空格于换行都算一个字符,因此可以通过此来把输入中的换行吞掉</p>
+</li>
+<li><p>scanf() 函数可以用于逻辑运算式而不行,原因在于他们属于不同的库,有不同的行为特点。scanf若读取成功将返回一个1,因此可以用于逻辑表达式中,而cin是cpp标准库中的,在读取失败时会返回失败位来表达错误,不能直接在逻辑表达式中使用</p>
+<p>但可以if(cin &gt;&gt; a),若输入成功则会返回1</p>
+</li>
+<li><p>剩下的部分即为普通的排序问题,用选择排序即可</p>
+</li>
+</ol>
 
+    </div>
+</article>
         </main>
         <aside class="aside">
             <div class="close"></div>
