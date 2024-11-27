@@ -112,77 +112,51 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Codeforces/">
-                        Codeforces
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/11/03/codeforces-Round-984-Div3/">
-                            codeforces Round 984 Div3
-                        </a>
-                    </h1>
+    
+    <h4 class="post-cat">
+        <a href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">
+            算法小结
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        二分查找与二分答案
+    </h2>
+    <ul class="post-date">
+        <li>
+            2024-11-24
+        </li>
+        <li>
+            Root
+        </li>
+    </ul>
+    <div class="post-content">
+        <h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p>二分查找与二分答案本质上是一个用来减少枚举数量的做法,而在浮点数当中因为浮点数难以枚举基本上常用</p>
+<p>都算是运用了二分法的思想,二分查找是要通过二分法查询有无这个元素,而二分答案是要通过二分法简化枚举的过程去求最终的答案</p>
+<p>同时,二分通常要求被查找的对象具有单调性,既要满足分出来的两边一边是可行解而另外一边是非法解,通过缩减l或者r的范围来做到确定最终的答案</p>
+<p>难点就在于如何找到一个函数来判断当前枚举出来的mid值到底是非法还是可行,根据return值的返回值来缩减区间</p>
+<p>二分答案可以抽象成我知道答案的区间,同时通过暴力枚举可能次数过多,我就可以通过二分答案来求解<br>二分答案实际上由二分与答案组成,二分指的是对问题状态空间的一种遍历方式,主要是来降低时间复杂度,而答案则是一种解题策略,作用是化求解为判定,降低难度</p>
+<p>具体来讲：</p>
+<ol>
+<li>答案 在此题中，我们首先要确定答案的范围。显然，答案最小可能是数列中的最大值.最大可能是所有数的和<br>其次，我们发现,给出一个解,判定这个解是否合法</li>
+<li>二分 二分建立在答案的基础上。此题中答案的排布,是有一定规律的,即,存在一个分界点p,使得<br>[l,p)中的数都是非法解,[p,r]中的数都是可行解。而 p即为所求的最小解。这种性质启示我们用一种特定的方法来枚举答案,于是有了二分</li>
+</ol>
+<p>因此二分常用来处理最大的最小或最小的最大问题</p>
+<h2 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h2><p>以下可以列出这一类题的板子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">while(l &lt; r)&#123;</span><br><span class="line">    int mid = l + (r - l) / 2;</span><br><span class="line">    if(a[mid] &gt;= x) r = mid;</span><br><span class="line">    else l = mid + 1;</span><br><span class="line">&#125;</span><br><span class="line">if(a[l] == x) return 1;</span><br><span class="line">else return -1;</span><br></pre></td></tr></table></figure>
+<p>上述代码用于二分查找可以找出满足条件的最小的编号<br>若想找到最大的编号则判断的语句应该为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(a[mid] &lt;= x) l = mid + 1;</span><br><span class="line">else r = mid;</span><br></pre></td></tr></table></figure>
 
-                    <ul class="post-date">
-                        <li>
-                            November 3, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-03%20164025.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/11/03/codeforces-Round-984-Div3/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Algorithm/">
-                        Algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/10/22/%E6%B4%9B%E8%B0%B7P1563-%E7%8E%A9%E5%85%B7%E8%B0%9C%E9%A2%98/">
-                            洛谷P1563_玩具谜题
-                        </a>
-                    </h1>
+<p>下面给出二分答案的通用写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while(l &lt;= r)&#123;</span><br><span class="line">    int mid = (l + r) / 2;</span><br><span class="line">    if(P(mid)) r = mid - 1, ans = mid;</span><br><span class="line">    else l = mid + 1;</span><br><span class="line">&#125;</span><br><span class="line">return ans;</span><br></pre></td></tr></table></figure>
+<p>需注意判断的内容要根据题目调整,判断哪一个区间都是可行解哪一个区间都是非法解，而至于取满足条件最小的还是最大的要在P()函数中调整返回的条件</p>
+<p>若l与r都是浮点数则要把mid + 1与mid - 1改成mid,同时把循环结束的条件改成r - l &gt; eps</p>
 
-                    <ul class="post-date">
-                        <li>
-                            October 22, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="https://cdn.luogu.com.cn/upload/image_hosting/7su06u3r.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/10/22/%E6%B4%9B%E8%B0%B7P1563-%E7%8E%A9%E5%85%B7%E8%B0%9C%E9%A2%98/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+    </div>
+</article>
         </main>
         <aside class="aside">
             <div class="close"></div>
