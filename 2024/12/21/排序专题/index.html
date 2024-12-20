@@ -112,67 +112,39 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2024/12/21/%E6%8E%92%E5%BA%8F%E4%B8%93%E9%A2%98/">
-                            排序专题
-                        </a>
-                    </h1>
+    
+    
+    <h2 class="post-title">
+        排序专题
+    </h2>
+    <ul class="post-date">
+        <li>
+            2024-12-21
+        </li>
+        <li>
+            Root
+        </li>
+    </ul>
+    <div class="post-content">
+        <h2 id="选择、冒泡、插入"><a href="#选择、冒泡、插入" class="headerlink" title="选择、冒泡、插入"></a>选择、冒泡、插入</h2><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; n - 1; i++)&#123;</span><br><span class="line">    for(int j = i + 1; j &lt; n; j++)&#123;</span><br><span class="line">        if(a[j] &lt; a[i])&#123;</span><br><span class="line">            int p = a[i];</span><br><span class="line">            a[i] = a[j];</span><br><span class="line">            a[j] = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-                    <ul class="post-date">
-                        <li>
-                            December 21, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/12/21/%E6%8E%92%E5%BA%8F%E4%B8%93%E9%A2%98/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/HDU%E7%99%BE%E9%A2%98/">
-                        HDU百题
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/10/24/HDU%E7%99%BE%E9%A2%982000-ASCII%E7%A0%81%E6%8E%92%E5%BA%8F/">
-                            HDU百题2000_ASCII码排序
-                        </a>
-                    </h1>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>代码如下:</p>
+<pre><code>for(int i = 0; i &lt; n - 1; i++)&#123;//注：最后会一次排好两个数因此只用到n-1
+    for(int j = 0; j &lt; n - 1 - i; j++)&#123;
+        if(a[j] &gt; a[j + 1])&#123;
+            int p = a[j];
+            a[j] = a[j + 1];
+            a[j + 1] = p;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
 
-                    <ul class="post-date">
-                        <li>
-                            October 24, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20241024113232.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/10/24/HDU%E7%99%BE%E9%A2%982000-ASCII%E7%A0%81%E6%8E%92%E5%BA%8F/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+    </div>
+</article>
         </main>
         <aside class="aside">
             <div class="close"></div>
