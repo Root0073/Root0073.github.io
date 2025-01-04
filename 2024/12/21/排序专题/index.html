@@ -103,8 +103,8 @@
         <ul>
             
             <li>
-                <a href="/KIPRoot0073">
-                    wechat
+                <a href="/null">
+                    wechat:KIPRoot0073
                 </a>
             </li>
             
@@ -114,6 +114,12 @@
         <main class="main">
             <article class="post">
     
+    
+    <h4 class="post-cat">
+        <a href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">
+            算法小结
+        </a>
+    </h4>
     
     
     <h2 class="post-title">
@@ -130,18 +136,13 @@
     <div class="post-content">
         <h2 id="选择、冒泡、插入"><a href="#选择、冒泡、插入" class="headerlink" title="选择、冒泡、插入"></a>选择、冒泡、插入</h2><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>代码如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; n - 1; i++)&#123;</span><br><span class="line">    for(int j = i + 1; j &lt; n; j++)&#123;</span><br><span class="line">        if(a[j] &lt; a[i])&#123;</span><br><span class="line">            int p = a[i];</span><br><span class="line">            a[i] = a[j];</span><br><span class="line">            a[j] = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<hr>
 <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>代码如下:</p>
-<pre><code>for(int i = 0; i &lt; n - 1; i++)&#123;//注：最后会一次排好两个数因此只用到n-1
-    for(int j = 0; j &lt; n - 1 - i; j++)&#123;
-        if(a[j] &gt; a[j + 1])&#123;
-            int p = a[j];
-            a[j] = a[j + 1];
-            a[j + 1] = p;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; n - 1; i++)&#123;//注:最后会一次排好两个数因此只用到n-1</span><br><span class="line">    for(int j = 0; j &lt; n - 1 - i; j++)&#123;</span><br><span class="line">        if(a[j] &gt; a[j + 1])&#123;</span><br><span class="line">            int p = a[j];</span><br><span class="line">            a[j] = a[j + 1];</span><br><span class="line">            a[j + 1] = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>代码如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 1; i &lt; n; i++)&#123;</span><br><span class="line">    int now = a[i], j;</span><br><span class="line">    for(int j = i - 1; j &gt;= 0; j--)&#123;</span><br><span class="line">        if(a[j] &gt; now)&#123;</span><br><span class="line">            a[j + 1] = a[j];</span><br><span class="line">        &#125;else break;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j + 1] = now;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>基本思想</strong><br>类似于把扑克牌洗牌的过程,每次选定一个数并开始向前搜索</p>
 
     </div>
 </article>
@@ -159,7 +160,7 @@
                 
     <h1>Archives</h1>
 
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a></li></ul>
 
 
             </section>

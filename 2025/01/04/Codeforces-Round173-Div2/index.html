@@ -112,106 +112,38 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">
-                        算法小结
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/11/24/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">
-                            二分查找与二分答案
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            November 24, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/11/24/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Codeforces/">
-                        Codeforces
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/11/18/Codeforces-Round988-Div3/">
-                            Codeforces_Round988_Div3
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            November 18, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20241118010541.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/11/18/Codeforces-Round988-Div3/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Codeforces/">
-                        Codeforces
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/11/03/codeforces-Round-984-Div3/">
-                            codeforces Round 984 Div3
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            November 3, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-03%20164025.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/11/03/codeforces-Round-984-Div3/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+    
+    <h4 class="post-cat">
+        <a href="/categories/Codeforces/">
+            Codeforces
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        Codeforeces_Round173_Div2
+    </h2>
+    <ul class="post-date">
+        <li>
+            2025-01-04
+        </li>
+        <li>
+            Root
+        </li>
+    </ul>
+    <div class="post-content">
+        <h2 id="Problem-B-Digits"><a href="#Problem-B-Digits" class="headerlink" title="Problem B Digits"></a>Problem B Digits</h2><h3 id="题目简介"><a href="#题目简介" class="headerlink" title="题目简介"></a>题目简介</h3><p>Artem wrote the digit $d$ on the board exactly $n!$ times in a row. So, he got the number $dddddd \dots ddd$ (exactly $n!$ digits).</p>
+<p>Now he is curious about which <strong>odd</strong> digits from $1$ to $9$ divide the number written on the board.<br><strong>Input</strong></p>
+<p>The first line contains a single integer $t$ ($1 \le t \le 100$) — the number of test cases. The next $t$ test cases follow.</p>
+<p>Each test case consists of a single line containing two integers $n$ and $d$ ($2 \le n \le 10^9$, $1 \le d \le 9$).<br><strong>Output</strong></p>
+<p>For each test case, output the odd digits in ascending order that divide the number written on the board.<br><strong>Example</strong><br>3<br>2 6<br>7 1<br>8 5</p>
+<p>1 3<br>1 3 7 9<br>1 3 5 7 9 </p>
+<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>这个题目主要是想让我们去求一个ddddd是否能被1，3，5，7，9整除，因此我们需要了解能被这些数字整除的条件是什么<br>这些数字都可以写成mA的形式,m即是1，3，5，7，9这些数字，而A就是n的阶乘<br>因此能被整除可以看成A能被这些数字整除或者m能被这些数字整除<br>对于3:只要n的阶乘是3的整数倍即可，因此当n大于等于3时都成立，而当n等于1或2时所有数字都不符合，故排除<br>对于7:可以做如下证明<br>1001&#x3D;7 * 11 * 13<br>111111&#x3D;1001+10010+100100<br>因此111111是能满足7的倍数的最小的A<br>即当n大于等于3时候以后的数字都成立，因为都是6的倍数<br>对于9:对于通常解来说，当n大于等于6时它是9的倍数，但是在6以下还包含一些特殊解，直接枚举计算即可</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void solve(long long n, long long m)&#123;</span><br><span class="line">    bool a[10] = &#123;false&#125;;</span><br><span class="line">    a[1] = true;</span><br><span class="line">    if(m % 3 == 0 || n &gt;= 3) a[3] = true;</span><br><span class="line">    if(m == 5) a[5] = true;</span><br><span class="line">    if(m == 7 || n &gt;= 3) a[7] = true;</span><br><span class="line">    if(m == 9 || n &gt;= 6) a[9] = true;</span><br><span class="line">    if(n &lt; 6)&#123;</span><br><span class="line">        int sum = 1;</span><br><span class="line">        for(int i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">            sum *= i;</span><br><span class="line">        &#125;</span><br><span class="line">        if(sum * m % 9 == 0) a[9] = true;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1; i &lt;= 9; i += 2)&#123;</span><br><span class="line">        if(a[i]) std::cout &lt;&lt; i &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; &#x27;\n&#x27;;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int t;</span><br><span class="line">    std::cin &gt;&gt; t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        long long n, m;</span><br><span class="line">        std::cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">        solve(n, m);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
         </main>
         <aside class="aside">
             <div class="close"></div>
