@@ -112,98 +112,37 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">
-                        算法小结
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2025/01/25/%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98/">
-                            搜索专题
-                        </a>
-                    </h1>
+    
+    <h4 class="post-cat">
+        <a href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">
+            算法小结
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        搜索专题
+    </h2>
+    <ul class="post-date">
+        <li>
+            2025-01-25
+        </li>
+        <li>
+            Root
+        </li>
+    </ul>
+    <div class="post-content">
+        <h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p>搜索实际上分为深度优先搜索(Depth First Search)和广度优先搜索(Breadth-First Search)<br>同样是寻找目标解，深度优先搜索找到的是字典序最小的解，而广度优先搜索找到的是步骤最小的解</p>
+<h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>深度优先搜索实际上和图有很深层次的关系,任何和深度优先搜索有关系的问题都伴随着图<br>其本质就是除非撞南墙不然一头走到底的算法每一个可能的分支路径都深入到不能再深入为止<br>深度度优先搜索的能够在图结构里搜索到通往特定终点的一条或者多条特定路径。<br>其内部原理实际上可以等同于一个栈</p>
+<h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><p>深度优先搜索常用回溯法来解决<br>回溯法能在树状结构的解空间里找到一条或多条可行路径<br>深度度优先搜索的能够在图结构里搜索到通往特定终点的一条或者多条特定路径<br>可以粗略地说回溯法 &#x3D; 深度优先搜索 + 剪枝函数<br>下面是回溯法的模板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void dfs(int k) &#123;</span><br><span class="line">    if(所有空填完) &#123;</span><br><span class="line">        判断最优解/记录答案</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    for(循环这个空能填完的选项) &#123;</span><br><span class="line">        if(选填合法) &#123;</span><br><span class="line">            记录下这个空(保存现场)</span><br><span class="line">            dfs(k + 1);</span><br><span class="line">            取消这个空(恢复现场)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-                    <ul class="post-date">
-                        <li>
-                            January 25, 2025
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2025/01/25/%E6%90%9C%E7%B4%A2%E4%B8%93%E9%A2%98/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">
-                        算法小结
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/12/21/%E6%8E%92%E5%BA%8F%E4%B8%93%E9%A2%98/">
-                            排序专题
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            December 21, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/12/21/%E6%8E%92%E5%BA%8F%E4%B8%93%E9%A2%98/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">
-                        算法小结
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/11/24/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">
-                            二分查找与二分答案
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            November 24, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/11/24/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>从当前位置开始四面八方搜索，尽可能遍历更多的节点<br>广度优先搜索用队列实现，将初始状态压入队列中，每次取出队首，找到所有队首能转换到的状态，再压入队列，如此反复直到队列为空<br>这样就能保证状态被访问时一定是采用的最短路径<br>广度优先搜索会优先考虑每种状态和初始状态的距离，每个时刻要做的事情就是从上个时刻每个状态拓展出新的状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Q.push(初始状态);</span><br><span class="line">while(!Q.empty()) &#123;</span><br><span class="line">    state u = Q.front();</span><br><span class="line">    Q.pop();</span><br><span class="line">    for(枚举所有可拓展的状态)&#123;</span><br><span class="line">        if(合法)</span><br><span class="line">        Q.push(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
         </main>
         <aside class="aside">
             <div class="close"></div>
