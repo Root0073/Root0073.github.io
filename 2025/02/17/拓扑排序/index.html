@@ -112,158 +112,39 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Algorithm/">
-                        Algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/10/22/%E6%B4%9B%E8%B0%B7P1563-%E7%8E%A9%E5%85%B7%E8%B0%9C%E9%A2%98/">
-                            洛谷P1563_玩具谜题
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            October 22, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="https://cdn.luogu.com.cn/upload/image_hosting/7su06u3r.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/10/22/%E6%B4%9B%E8%B0%B7P1563-%E7%8E%A9%E5%85%B7%E8%B0%9C%E9%A2%98/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Draft/">
-                        Draft
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/10/21/image-test/">
-                            image test
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            October 21, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/eacfd68204a08ef3637ea75d97e6de9b090b4bde973ce37fc871199617c7001c.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/10/21/image-test/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Draft/">
-                        Draft
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/10/20/test-2/">
-                            test 2
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            October 20, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/10/20/test-2/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/Draft/">
-                        Draft
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/10/20/test1/">
-                            test1
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            October 20, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/10/20/test1/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2024/10/19/hello-world/">
-                            Hello World
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            October 19, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/10/19/hello-world/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+    
+    <h4 class="post-cat">
+        <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">
+            算法笔记
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        拓扑排序
+    </h2>
+    <ul class="post-date">
+        <li>
+            2025-02-17
+        </li>
+        <li>
+            Root
+        </li>
+    </ul>
+    <div class="post-content">
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>拓扑排序要解决的问题是如何给一个DAG的所有节点排序，其实就是将所有节点排序使得排在前面的节点不能依赖与排在后面的节点<br><strong>构造拓扑序列的步骤</strong></p>
+<ol>
+<li>选择一个入度为0的点</li>
+<li>输出该顶点，从图中删除此顶点及其所有的出边<br>重复直到所有顶点都输出，拓扑排序完成<br>如果不存在入度为0的点则说明这个图是有环图拓扑排序无法完成，陷入死锁</li>
+</ol>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>有两种实现方式：Kahn算法和DFS<br>合理性证明：如果一个图删掉某个入度为0的节点之后还能拓扑排序那么原图也能，反过来也一样</p>
+<h3 id="kahn算法"><a href="#kahn算法" class="headerlink" title="-kahn算法"></a>-kahn算法</h3><p>其实本质就是一个bfs做法<br>初始状态下，集合s有所有入度为0的点，L是一个空列表<br>每次从s中取出一个点u放入L，然后将u的所有边删除，对于边(u,v)如果删除后v的入度变成0，则将v放入s中<br>不断重复此过程直到集合s为空，检查图中是否存在任何边，如果有那么不是DAG<br>L中顶点的顺序就是构造拓扑序列的结果</p>
+<h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int n, m;</span><br><span class="line">vector&lt;int&gt; G[MAXN];</span><br><span class="line">int in[MAXN];</span><br><span class="line"></span><br><span class="line">bool solve() &#123;</span><br><span class="line">    vector&lt;int&gt; L;</span><br><span class="line">    queue&lt;int&gt; S;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if(in[i] == 0) S.push(i);</span><br><span class="line">        //把所有入度为0的点push进去</span><br><span class="line">    &#125;</span><br><span class="line">    while(!S.empty()) &#123;</span><br><span class="line">        int u = S.front();</span><br><span class="line">        S.pop();</span><br><span class="line">        L.push_back(u);</span><br><span class="line">        for(auto v : G[u])&#123;</span><br><span class="line">            if(--in[v] == 0) S.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(L.size() == n) &#123;</span><br><span class="line">        for(auto i : L) cout &lt;&lt; i &lt;&lt; &quot; &quot;;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="-DFS"></a>-DFS</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bool dfs(int u)//从节点u出发&#123;</span><br><span class="line">    vis[u] = 1;</span><br><span class="line">    for(int i = 0; i &lt; linker[u].size(); i++) &#123;</span><br><span class="line">        int now = linker[u][i];</span><br><span class="line">        if(vis[v] == 1) return false;//如果后继比先驱先访问，说明有存在环</span><br><span class="line">        if(!vis[v] &amp;&amp; dfs(v)) return false;//访问后继为假，也是失败</span><br><span class="line">    &#125;</span><br><span class="line">    vis[u] = -1;//复原</span><br><span class="line">    ans[tot++] = u;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
         </main>
         <aside class="aside">
             <div class="close"></div>
