@@ -112,40 +112,34 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">
-                        算法小结
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2024/12/21/%E6%8E%92%E5%BA%8F%E4%B8%93%E9%A2%98/">
-                            排序专题
-                        </a>
-                    </h1>
+    
+    <h4 class="post-cat">
+        <a href="/categories/%E7%89%9B%E5%AE%A2/">
+            牛客
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        牛客小白月赛112
+    </h2>
+    <ul class="post-date">
+        <li>
+            2025-03-25
+        </li>
+        <li>
+            Root
+        </li>
+    </ul>
+    <div class="post-content">
+        <h2 id="志乃的k叉树"><a href="#志乃的k叉树" class="headerlink" title="志乃的k叉树"></a>志乃的k叉树</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250325183427.png"><br>思路：贪心<br>通过观察可以发现当我选择一个点作为根之后其他的点都顺延下来，每一个点的叉数都为链接数-1，因此我们只需要统计每一个点的linker数找出最大的那个点<br>我们可以发现不论怎样最终的答案都是这个最大的点-1，因此重新遍历一遍找到最早的linker数为这个最大值的点输出即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    cin.ignore();</span><br><span class="line">    vector&lt;int&gt; linker(n + 1, 0);</span><br><span class="line">    int m, k;</span><br><span class="line">    int maxn = 0, maxi = 1;</span><br><span class="line">    if(n == 2) &#123;</span><br><span class="line">        cout &lt;&lt; &quot;1 1&quot; &lt;&lt; endl;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    while(~scanf(&quot;%d %d&quot;, &amp;m, &amp;k)) &#123;</span><br><span class="line">        linker[m]++;</span><br><span class="line">        if(maxn &lt; linker[m]) &#123;</span><br><span class="line">            maxn = linker[m];</span><br><span class="line">        &#125;</span><br><span class="line">        linker[k]++;</span><br><span class="line">        if(maxn &lt; linker[k]) &#123;</span><br><span class="line">            maxn = linker[k];</span><br><span class="line">        &#125;</span><br><span class="line">        cin.ignore();</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if(linker[i] == maxn) continue;</span><br><span class="line">        else &#123;</span><br><span class="line">            cout &lt;&lt; maxn - 1 &lt;&lt; &quot; &quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="智乃的凑数题（Easy-Hard）"><a href="#智乃的凑数题（Easy-Hard）" class="headerlink" title="智乃的凑数题（Easy &amp; Hard）"></a>智乃的凑数题（Easy &amp; Hard）</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250328012524.png"><br>可以记住一个小结论：类似于这个val的计算公式实际上的意思是表头之和和列头之和相乘，并不用一个一个去计算<br>因此，我们可以由此引申出dp的思维，去找两个相乘能凑出这个数的</p>
 
-                    <ul class="post-date">
-                        <li>
-                            December 21, 2024
-                        </li>
-                        <li>
-                            Root
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2024/12/21/%E6%8E%92%E5%BA%8F%E4%B8%93%E9%A2%98/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+    </div>
+</article>
         </main>
         <aside class="aside">
             <div class="close"></div>
