@@ -115,27 +115,24 @@
             <article class="post">
     
     
-    <h4 class="post-cat">
-        <a href="/categories/Draft/">
-            Draft
-        </a>
-    </h4>
-    
     
     <h2 class="post-title">
-        image test
+        Codeforces_D3_1034
     </h2>
     <ul class="post-date">
         <li>
-            2024-10-21
+            2025-07-12
         </li>
         <li>
             Root
         </li>
     </ul>
     <div class="post-content">
-        <h2 id="This-is-a-image-test"><a href="#This-is-a-image-test" class="headerlink" title="This is a image  test"></a>This is a image  test</h2><p> <img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/eacfd68204a08ef3637ea75d97e6de9b090b4bde973ce37fc871199617c7001c.png"></p>
-
+        <h2 id="E-MEX-Count"><a href="#E-MEX-Count" class="headerlink" title="E MEX Count"></a>E MEX Count</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250712045317.png"><br>题目大意:给予每次删除从0-n个数字的权利，求数组中MEX的情况个数</p>
+<p>思路：尝试一下就可以知道如果想通过枚举次数来得到MEX的情况非常难，因为删除的情况非常多，美剧起来非常麻烦<br>因此我们可以利用正难则反的思想：不去通过枚举次数来得到MEX的总数，而是通过每一个可能的MEX情况算出他的删除数量上下限，然后存进差分数组，答案就是差分数组的前缀和</p>
+<p>我们需要先遍历一遍数组得，判断是否数组从中间断开，如果断开那么更大的数字无法成为MEX，因为数字不可能增加</p>
+<p>对于每一个数字的下限，就是把这个数字全部清空，cnt(a)<br>上限就是比它小的数字只留一个，其他的全部清空，n - m</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">//用一下证难则反的思想，不去在原数组里面通过次数找mex，而是枚举每一个mex需要的k值</span><br><span class="line">void solve() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    vector&lt;int&gt; a(n + 1);</span><br><span class="line">    map&lt;int, int&gt; mp;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        mp[a[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    int mex = 0;</span><br><span class="line">    for(int i = 0; i &lt;= n; i++) &#123;</span><br><span class="line">        if(mp[i] == 0) &#123;</span><br><span class="line">            mex = i;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //cout &lt;&lt; mex &lt;&lt; endl;</span><br><span class="line">    vector&lt;int&gt; c(n + 2, 0);</span><br><span class="line">    for(int i = mex; i &gt;= 0; i--) &#123;</span><br><span class="line">        c[mp[i]]++;</span><br><span class="line">        c[n - i + 1]--;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0; i &lt;= n; i++) &#123;</span><br><span class="line">        if(i &gt;= 1) c[i] += c[i - 1];</span><br><span class="line">        cout &lt;&lt; c[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--) solve();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 </article>
         </main>
