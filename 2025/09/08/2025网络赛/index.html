@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="keywords" content="hexo, autumn" />
+    <title>
+        Root&#39;s Space
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico" />
+     
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
+
+    <script>
+        infiniteScroll()
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const [
+                mainTitle,
+                mobileMenu,
+                mobileMainTitle,
+                mobileMenuBtn,
+                ipadMenuBtn,
+                aside,
+                closeBtn,
+            ] = getEle(
+                '#main-title',
+                '.mobile-menu',
+                '.mobile-menu h3',
+                '.mobile-menu button',
+                '.ipad-menu',
+                'aside',
+                'aside .close',
+            )
+            const io = new IntersectionObserver(entries => {
+                if (entries[0].intersectionRatio <= 0) {
+                    mobileMainTitle.classList.remove('invisibile')
+                } else {
+                    mobileMainTitle.classList.add('invisibile')
+                }
+            })
+            io.observe(mainTitle)
+
+            clickToggleAside(mobileMenuBtn)
+            clickToggleAside(ipadMenuBtn)
+            clickToggleAside(closeBtn, false)
+
+            const isMenuVisible = window.getComputedStyle(mobileMenu).display !== 'none'
+            if (isMenuVisible) document.body.style.background = 'none'
+
+            function getEle(...args) {
+                return args.map(arg => document.querySelector(arg))
+            }
+
+            function clickToggleAside(btn, show = true) {
+                btn.addEventListener('click', function () {
+                    if (show) {
+                        aside.style.display = 'block'
+                    } else {
+                        aside.style.display = 'none'
+                    }
+                })
+            }
+        })
+    </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+    <div class="container">
+        <header class="header">
+    <nav class="mobile-menu" style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+        <h3 class="invisibile">
+            <a href="/" class="logo">
+                Root&#39;s Space
+            </a>
+        </h3>
+        <button class="menu">menu</button>
+    </nav>
+
+    <button class="ipad-menu menu">menu</button>
+
+    <h1 class="title" id="main-title">
+        <a href="/" class="logo">
+            Root&#39;s Space
+        </a>
+    </h1>
+    <h2 class="desc">
+        
+    </h2>
+
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a href="/null">
+                    We're Just Bad Code
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</header>
+        <main class="main">
+            <article class="post">
+    
+    
+    
+    <h2 class="post-title">
+        2025网络赛
+    </h2>
+    <ul class="post-date">
+        <li>
+            2025-09-08
+        </li>
+        <li>
+            Root
+        </li>
+    </ul>
+    <div class="post-content">
+        <h2 id="M-Teleporter"><a href="#M-Teleporter" class="headerlink" title="M Teleporter"></a>M Teleporter</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250908233323.png"></p>
+<blockquote>
+<p>题目大意：给你一棵有权树，并在给你m条权为0的边，需要输出当k为1-n的时候所有点到根节点的最短路径和</p>
+</blockquote>
+<p>很容易想到最短路，但是如果直接建一张大图的话会有非常多重复的边因为你要跑非常多边的dij，再加上建边根本存不下所以要考虑优化<br>在这种情况下，我们可以每一层跑dij并把dis往上传，每层把有变化的dis放进pq重新对这些边进行修改，这样就能大大减轻空间开销并优化时间的常数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define inf 0x3f3f3f3f3f3f3f3f</span><br><span class="line">#define int long long</span><br><span class="line">struct node &#123;</span><br><span class="line">	int u, dis;</span><br><span class="line">	friend bool operator &lt; (node a, node b) &#123;</span><br><span class="line">		return a.dis &gt; b.dis;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">signed main() &#123;</span><br><span class="line">	int n ,m;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt; g(n + 1);</span><br><span class="line">	for(int i = 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">		int u, v, w;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">		g[u].push_back(&#123;v, w&#125;);</span><br><span class="line">		g[v].push_back(&#123;u, w&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;pair&lt;int, int&gt;&gt; e;</span><br><span class="line">	for(int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">		int u, v;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">		e.push_back(&#123;u, v&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	priority_queue&lt;node&gt; pq;</span><br><span class="line">	vector&lt;vector&lt;int&gt;&gt; dis(n + 1, vector&lt;int&gt;(n + 1, inf));</span><br><span class="line">	pq.push(&#123;1, 0&#125;);</span><br><span class="line">	dis[1][0] = 0;</span><br><span class="line">	auto cul = [&amp;](int i) -&gt; void &#123;//这里就相当于一个裸的最短路</span><br><span class="line">		while(!pq.empty()) &#123;</span><br><span class="line">			int u = pq.top().u, d = pq.top().dis;</span><br><span class="line">			pq.pop();</span><br><span class="line">			for(int j = 0; j &lt; g[u].size(); j++) &#123;</span><br><span class="line">				int v = g[u][j].first, w = g[u][j].second;</span><br><span class="line">				if(dis[v][i] &gt; d + w) &#123;</span><br><span class="line">					dis[v][i] = d + w;</span><br><span class="line">					pq.push(&#123;v, dis[v][i]&#125;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	auto update = [&amp;](int N) -&gt; void &#123;//这一块是去计算层和层之间的传递</span><br><span class="line">		if(N) &#123;</span><br><span class="line">			for(int i = 0; i &lt; e.size(); i++) &#123;</span><br><span class="line">				int u = e[i].first, v = e[i].second;</span><br><span class="line">				dis[u][N] = min(dis[u][N], dis[v][N - 1]);</span><br><span class="line">				dis[v][N] = min(dis[v][N], dis[u][N - 1]);</span><br><span class="line">			&#125;//先通过这些边把有可能改变的dis值传上来</span><br><span class="line">			for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">				if(dis[i][N] &lt; dis[i][N - 1]) &#123;</span><br><span class="line">					pq.push(&#123;i, dis[i][N]&#125;);//di算法的本质：因为这一条边的dis值改变了所以将他存进pq里用他来更新后面的dis值</span><br><span class="line">				&#125;</span><br><span class="line">				dis[i][N] = min(dis[i][N], dis[i][N - 1]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int res = 0;</span><br><span class="line">		cul(N);</span><br><span class="line">		for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">			res += dis[i][N];</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">	&#125;;</span><br><span class="line">	for(int i = 0; i &lt;= n; i++) update(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="I-Knapsack-Problem"><a href="#I-Knapsack-Problem" class="headerlink" title="I Knapsack Problem"></a>I Knapsack Problem</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250909022305.png"><br>思路：很典型的二维dij，优先背包个数其次背包容量进行松弛，得到最短路就是每个点的答案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">#define inf 0x3f3f3f3f3f3f3f3f</span><br><span class="line">struct node &#123;</span><br><span class="line">	int u;</span><br><span class="line">	pair&lt;int, int&gt; v;</span><br><span class="line">	friend bool operator &lt; (node a, node b) &#123;</span><br><span class="line">		return a.v &gt; b.v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int n, m, V, t;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m &gt;&gt; V &gt;&gt; t;</span><br><span class="line">	vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt; g(n + 1);</span><br><span class="line">	for(int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">		int u, v, d;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v &gt;&gt; d;</span><br><span class="line">		g[u].push_back(&#123;v, d&#125;);</span><br><span class="line">		g[v].push_back(&#123;u, d&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;pair&lt;int, int&gt;&gt; dis(n + 1, pair&#123;inf, inf&#125;);</span><br><span class="line">	dis[t] = &#123;1, 0&#125;;</span><br><span class="line">	priority_queue&lt;node&gt; pq;</span><br><span class="line">	vector&lt;bool&gt; vis(n + 1, false);</span><br><span class="line">	pq.push(&#123;t, &#123;1, 0&#125;&#125;);</span><br><span class="line">	while(!pq.empty()) &#123;</span><br><span class="line">		auto [now, p] = pq.top();</span><br><span class="line">		pq.pop();</span><br><span class="line">		if(vis[now]) continue;</span><br><span class="line">		vis[now] = true;</span><br><span class="line">		for(int i = 0; i &lt; g[now].size(); i++) &#123;</span><br><span class="line">			int v = g[now][i].first, w = g[now][i].second;</span><br><span class="line">			int b = dis[now].second + w;</span><br><span class="line">			int c = dis[now].first;</span><br><span class="line">			if(b &gt; V) &#123;</span><br><span class="line">				c++;</span><br><span class="line">				b = w;</span><br><span class="line">			&#125;</span><br><span class="line">			if(dis[v] &gt; pair&#123;c, b&#125;) &#123;</span><br><span class="line">				dis[v] = pair&#123;c, b&#125;;</span><br><span class="line">				pq.push(&#123;v, dis[v]&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		if(dis[i].first == inf) cout &lt;&lt; -1 &lt;&lt; &quot; &quot;;</span><br><span class="line">		else cout &lt;&lt; dis[i].first &lt;&lt; &quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">signed main() &#123;</span><br><span class="line">	int t = 1;</span><br><span class="line">	//cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+        </main>
+        <aside class="aside">
+            <div class="close"></div>
+            <section class="aside-section">
+                
+    <h1>Categories</h1>
+
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Codeforces/">Codeforces</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Draft/">Draft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU%E7%99%BE%E9%A2%98/">HDU百题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%86%99%E9%A2%98log/">写题log</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B8%B8%E8%A7%81%E4%BC%98%E5%8C%96/">常见优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%9B%E5%AE%A2/">牛客</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">算法小结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a></li></ul>
+
+            </section>
+            <section class="aside-section">
+                
+    <h1>Archives</h1>
+
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a></li></ul>
+
+
+            </section>
+            <section class="aside-section tag">
+                
+    <h1>Tags</h1>
+
+    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp%E9%97%AE%E9%A2%98/" rel="tag">dp问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-participation/" rel="tag">virtual participation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vitual-participation/" rel="tag">vitual participation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A5%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="tag">补题记录</a></li></ul>
+
+            </section>
+        </aside>
+    </div>
+</body>
+
+</html>
