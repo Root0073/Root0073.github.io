@@ -1,140 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <meta name="keywords" content="hexo, autumn" />
-    <title>
-        Root&#39;s Space
-    </title>
-    <!-- favicon -->
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="E 小紫的线段染色 思路：可以知道知道如果三个线段重叠在一起那么就会无解，最多两个线段在一起时才可以，因此我们需要先行判断是否无解对于已经确定有解的情况，是否涂成紫色根据在其左侧有无与他相交的线段这个相交线段的判断就是根据最有可能相交的那条线段来即右端点最靠右的那条线段我们可以选择一个点为当前r值的最大值并存下来这个线段的id如果列举出来的线段r值大于储存的这个线段的l值那么说明一定存在交叉这时候">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客周赛Round85">
+<meta property="og:url" content="http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/index.html">
+<meta property="og:site_name" content="Root&#39;s Space">
+<meta property="og:description" content="E 小紫的线段染色 思路：可以知道知道如果三个线段重叠在一起那么就会无解，最多两个线段在一起时才可以，因此我们需要先行判断是否无解对于已经确定有解的情况，是否涂成紫色根据在其左侧有无与他相交的线段这个相交线段的判断就是根据最有可能相交的那条线段来即右端点最靠右的那条线段我们可以选择一个点为当前r值的最大值并存下来这个线段的id如果列举出来的线段r值大于储存的这个线段的l值那么说明一定存在交叉这时候">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250318225255.png">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250325024348.png">
+<meta property="article:published_time" content="2025-03-18T14:49:13.000Z">
+<meta property="article:modified_time" content="2025-03-24T19:01:45.472Z">
+<meta property="article:author" content="Root">
+<meta property="article:tag" content="补题记录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250318225255.png">
     
-    <link rel="icon" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico" />
-     
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>牛客周赛Round85</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
 <link rel="stylesheet" href="/css/style.css">
 
-
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
-
-    <script>
-        infiniteScroll()
-
-        window.addEventListener('DOMContentLoaded', function () {
-            const [
-                mainTitle,
-                mobileMenu,
-                mobileMainTitle,
-                mobileMenuBtn,
-                ipadMenuBtn,
-                aside,
-                closeBtn,
-            ] = getEle(
-                '#main-title',
-                '.mobile-menu',
-                '.mobile-menu h3',
-                '.mobile-menu button',
-                '.ipad-menu',
-                'aside',
-                'aside .close',
-            )
-            const io = new IntersectionObserver(entries => {
-                if (entries[0].intersectionRatio <= 0) {
-                    mobileMainTitle.classList.remove('invisibile')
-                } else {
-                    mobileMainTitle.classList.add('invisibile')
-                }
-            })
-            io.observe(mainTitle)
-
-            clickToggleAside(mobileMenuBtn)
-            clickToggleAside(ipadMenuBtn)
-            clickToggleAside(closeBtn, false)
-
-            const isMenuVisible = window.getComputedStyle(mobileMenu).display !== 'none'
-            if (isMenuVisible) document.body.style.background = 'none'
-
-            function getEle(...args) {
-                return args.map(arg => document.querySelector(arg))
-            }
-
-            function clickToggleAside(btn, show = true) {
-                btn.addEventListener('click', function () {
-                    if (show) {
-                        aside.style.display = 'block'
-                    } else {
-                        aside.style.display = 'none'
-                    }
-                })
-            }
-        })
-    </script>
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-<body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
-    <div class="container">
-        <header class="header">
-    <nav class="mobile-menu" style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
-        <h3 class="invisibile">
-            <a href="/" class="logo">
-                Root&#39;s Space
-            </a>
-        </h3>
-        <button class="menu">menu</button>
-    </nav>
-
-    <button class="ipad-menu menu">menu</button>
-
-    <h1 class="title" id="main-title">
-        <a href="/" class="logo">
-            Root&#39;s Space
-        </a>
-    </h1>
-    <h2 class="desc">
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
         
-    </h2>
+        <li><a class="icon" aria-label="Previous post" href="/2025/03/21/%E5%AF%BC%E5%BC%B9%E6%8B%A6%E6%88%AA/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/03/13/Codeforces1009/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&text=牛客周赛Round85"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&is_video=false&description=牛客周赛Round85"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=牛客周赛Round85&body=Check out this article: http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&name=牛客周赛Round85&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&t=牛客周赛Round85"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-    <div class="links">
-        <ul>
-            
-            <li>
-                <a href="/null">
-                    We're Just Bad Code
-                </a>
-            </li>
-            
-        </ul>
     </div>
-</header>
-        <main class="main">
-            <article class="post">
     
     
-    <h4 class="post-cat">
-        <a href="/categories/%E7%89%9B%E5%AE%A2/">
-            牛客
-        </a>
-    </h4>
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#E-%E5%B0%8F%E7%B4%AB%E7%9A%84%E7%BA%BF%E6%AE%B5%E6%9F%93%E8%89%B2"><span class="toc-number">1.</span> <span class="toc-text">E 小紫的线段染色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F-%E5%B0%8F%E7%B4%AB%E7%9A%84%E6%A0%91%E4%B8%8A%E6%9F%93%E8%89%B2"><span class="toc-number">2.</span> <span class="toc-text">F 小紫的树上染色</span></a></li></ol>
+      </div>
     
+  </span>
+</div>
+
     
-    <h2 class="post-title">
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
         牛客周赛Round85
-    </h2>
-    <ul class="post-date">
-        <li>
-            2025-03-18
-        </li>
-        <li>
-            Root
-        </li>
-    </ul>
-    <div class="post-content">
-        <h2 id="E-小紫的线段染色"><a href="#E-小紫的线段染色" class="headerlink" title="E 小紫的线段染色"></a>E 小紫的线段染色</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250318225255.png"></p>
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Root</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-03-18T14:49:13.000Z" class="dt-published" itemprop="datePublished">2025-03-18</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E7%89%9B%E5%AE%A2/">牛客</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E8%A1%A5%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="tag">补题记录</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="E-小紫的线段染色"><a href="#E-小紫的线段染色" class="headerlink" title="E 小紫的线段染色"></a>E 小紫的线段染色</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250318225255.png"></p>
 <p>思路：可以知道知道如果三个线段重叠在一起那么就会无解，最多两个线段在一起时才可以，因此我们需要先行判断是否无解<br>对于已经确定有解的情况，是否涂成紫色根据在其左侧有无与他相交的线段<br>这个相交线段的判断就是根据最有可能相交的那条线段来<br>即右端点最靠右的那条线段<br>我们可以选择一个点为当前r值的最大值并存下来这个线段的id<br>如果列举出来的线段r值大于储存的这个线段的l值那么说明一定存在交叉<br>这时候就可以取反表明这个涂成紫色<br>同时一直筛选最大的r并存下来id</p>
 <p>代码如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">思路：只有三个线段相交才会导致无解</span><br><span class="line">因此先特判一下所有线段能否有解</span><br><span class="line">然后再分别判断该涂什么颜色</span><br><span class="line">涂色要根据在其左边的右边点最接近该线段的线段,即最容易和他有交集的线段</span><br><span class="line">如果其右端点大于左端点那么取反</span><br><span class="line">*/</span><br><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct interval &#123;</span><br><span class="line">    long long l, r, id;</span><br><span class="line">    bool operator&lt;(const interval &amp; in) const &#123;</span><br><span class="line">        if(l == in.l) return r &lt; in.r;</span><br><span class="line">        return l &lt; in.l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">int main() &#123;</span><br><span class="line">    vector&lt;interval&gt; a;</span><br><span class="line">    vector&lt;pair&lt;long long, long long&gt; &gt; d;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i].l &gt;&gt; a[i].r;</span><br><span class="line">        a[i].id = i;</span><br><span class="line">        d.emplace_back(a[i].l, 1);</span><br><span class="line">        d.emplace_back(a[i].r + 1, -1);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(d.begin(), d.end());</span><br><span class="line">    int sum = 0;</span><br><span class="line">    vector&lt;int&gt; ans(n + 1);</span><br><span class="line">    for(auto &amp;[x, y] : d) &#123;</span><br><span class="line">        sum += y;</span><br><span class="line">        if(sum &gt;= 3) &#123;</span><br><span class="line">            cout &lt;&lt; -1 &lt;&lt; endl;</span><br><span class="line">            return ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;//判断能否有解</span><br><span class="line">    sort(a.begin() + 1, a.end());</span><br><span class="line">    long long r = -1, id = 0;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if(a[i].l &lt; r) &#123;</span><br><span class="line">            ans[a[i].id] = (ans[id] ^ 1);</span><br><span class="line">        &#125;</span><br><span class="line">        if(a[i].r &gt; r) &#123;</span><br><span class="line">            r = a[i].r;</span><br><span class="line">            id = a[i].id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; purple(n + 1);</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if(ans[i] == 1) purple.push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    if(purple.size() == 0) purple.push_back(1);//注意这里一定要有涂成紫色的线段所以如果size为0就随便push一个</span><br><span class="line">    for(int i = 0; i &lt; purple.size(); i++) &#123;</span><br><span class="line">        cout &lt;&lt; purple[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -147,35 +181,143 @@
 
 
 
-    </div>
+  </div>
 </article>
-        </main>
-        <aside class="aside">
-            <div class="close"></div>
-            <section class="aside-section">
-                
-    <h1>Categories</h1>
-
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Codeforces/">Codeforces</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Draft/">Draft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU%E7%99%BE%E9%A2%98/">HDU百题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%86%99%E9%A2%98log/">写题log</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B8%B8%E8%A7%81%E4%BC%98%E5%8C%96/">常见优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%9B%E5%AE%A2/">牛客</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">算法小结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a></li></ul>
-
-            </section>
-            <section class="aside-section">
-                
-    <h1>Archives</h1>
-
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a></li></ul>
 
 
-            </section>
-            <section class="aside-section tag">
-                
-    <h1>Tags</h1>
 
-    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp%E9%97%AE%E9%A2%98/" rel="tag">dp问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-participation/" rel="tag">virtual participation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vitual-participation/" rel="tag">vitual participation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A5%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="tag">补题记录</a></li></ul>
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-            </section>
-        </aside>
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
     </div>
-</body>
 
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#E-%E5%B0%8F%E7%B4%AB%E7%9A%84%E7%BA%BF%E6%AE%B5%E6%9F%93%E8%89%B2"><span class="toc-number">1.</span> <span class="toc-text">E 小紫的线段染色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F-%E5%B0%8F%E7%B4%AB%E7%9A%84%E6%A0%91%E4%B8%8A%E6%9F%93%E8%89%B2"><span class="toc-number">2.</span> <span class="toc-text">F 小紫的树上染色</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&text=牛客周赛Round85"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&is_video=false&description=牛客周赛Round85"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=牛客周赛Round85&body=Check out this article: http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&title=牛客周赛Round85"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&name=牛客周赛Round85&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/03/18/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9BRound85/&t=牛客周赛Round85"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Root
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
 </html>

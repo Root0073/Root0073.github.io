@@ -1,166 +1,309 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <meta name="keywords" content="hexo, autumn" />
-    <title>
-        Root&#39;s Space
-    </title>
-    <!-- favicon -->
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="G Grand Prix of Coffee题目大意：对于原序列改变原来序列中的一个值使得任意的二进制或值都和原来相同需要做出一个观察：如果想要使得原来序列值的或值都相同，只需要让他和左右的值或值保持不变即可因为你不管怎么选取区间，都一定会包含和他左右的值，而其他的值又是完全一样的，故可以得到这个结论因此只用看左右的值来确定中间的值，看有多少种情况即可如果本来的或值是0，那么这一位只能是0如果是1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025上理校赛">
+<meta property="og:url" content="http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Root&#39;s Space">
+<meta property="og:description" content="G Grand Prix of Coffee题目大意：对于原序列改变原来序列中的一个值使得任意的二进制或值都和原来相同需要做出一个观察：如果想要使得原来序列值的或值都相同，只需要让他和左右的值或值保持不变即可因为你不管怎么选取区间，都一定会包含和他左右的值，而其他的值又是完全一样的，故可以得到这个结论因此只用看左右的值来确定中间的值，看有多少种情况即可如果本来的或值是0，那么这一位只能是0如果是1">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250710144301.png">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250710150226.png">
+<meta property="article:published_time" content="2025-07-10T06:36:38.000Z">
+<meta property="article:modified_time" content="2025-07-10T09:03:48.802Z">
+<meta property="article:author" content="Root">
+<meta property="article:tag" content="virtual participation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250710144301.png">
     
-    <link rel="icon" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico" />
-     
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>2025上理校赛</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
 <link rel="stylesheet" href="/css/style.css">
 
-
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
-
-    <script>
-        infiniteScroll()
-
-        window.addEventListener('DOMContentLoaded', function () {
-            const [
-                mainTitle,
-                mobileMenu,
-                mobileMainTitle,
-                mobileMenuBtn,
-                ipadMenuBtn,
-                aside,
-                closeBtn,
-            ] = getEle(
-                '#main-title',
-                '.mobile-menu',
-                '.mobile-menu h3',
-                '.mobile-menu button',
-                '.ipad-menu',
-                'aside',
-                'aside .close',
-            )
-            const io = new IntersectionObserver(entries => {
-                if (entries[0].intersectionRatio <= 0) {
-                    mobileMainTitle.classList.remove('invisibile')
-                } else {
-                    mobileMainTitle.classList.add('invisibile')
-                }
-            })
-            io.observe(mainTitle)
-
-            clickToggleAside(mobileMenuBtn)
-            clickToggleAside(ipadMenuBtn)
-            clickToggleAside(closeBtn, false)
-
-            const isMenuVisible = window.getComputedStyle(mobileMenu).display !== 'none'
-            if (isMenuVisible) document.body.style.background = 'none'
-
-            function getEle(...args) {
-                return args.map(arg => document.querySelector(arg))
-            }
-
-            function clickToggleAside(btn, show = true) {
-                btn.addEventListener('click', function () {
-                    if (show) {
-                        aside.style.display = 'block'
-                    } else {
-                        aside.style.display = 'none'
-                    }
-                })
-            }
-        })
-    </script>
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-<body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
-    <div class="container">
-        <header class="header">
-    <nav class="mobile-menu" style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
-        <h3 class="invisibile">
-            <a href="/" class="logo">
-                Root&#39;s Space
-            </a>
-        </h3>
-        <button class="menu">menu</button>
-    </nav>
-
-    <button class="ipad-menu menu">menu</button>
-
-    <h1 class="title" id="main-title">
-        <a href="/" class="logo">
-            Root&#39;s Space
-        </a>
-    </h1>
-    <h2 class="desc">
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
         
-    </h2>
+        <li><a class="icon" aria-label="Previous post" href="/2025/07/12/Codeforces-D3-1034/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/04/28/%E5%88%A9%E7%94%A8%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%8C%96/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&text=2025上理校赛"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&is_video=false&description=2025上理校赛"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2025上理校赛&body=Check out this article: http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&name=2025上理校赛&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&t=2025上理校赛"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-    <div class="links">
-        <ul>
-            
-            <li>
-                <a href="/null">
-                    We're Just Bad Code
-                </a>
-            </li>
-            
-        </ul>
     </div>
-</header>
-        <main class="main">
-            <article class="post">
     
     
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#G-Grand-Prix-of-Coffee"><span class="toc-number">1.</span> <span class="toc-text">G Grand Prix of Coffee</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Colorful-Stage"><span class="toc-number">2.</span> <span class="toc-text">C Colorful Stage</span></a></li></ol>
+      </div>
     
-    <h2 class="post-title">
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
         2025上理校赛
-    </h2>
-    <ul class="post-date">
-        <li>
-            2025-07-10
-        </li>
-        <li>
-            Root
-        </li>
-    </ul>
-    <div class="post-content">
-        <h3 id="G-Grand-Prix-of-Coffee"><a href="#G-Grand-Prix-of-Coffee" class="headerlink" title="G Grand Prix of Coffee"></a>G Grand Prix of Coffee</h3><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250710144301.png"><br>题目大意：对于原序列改变原来序列中的一个值使得任意的二进制或值都和原来相同<br>需要做出一个观察：如果想要使得原来序列值的或值都相同，只需要让他和左右的值或值保持不变即可<br>因为你不管怎么选取区间，都一定会包含和他左右的值，而其他的值又是完全一样的，故可以得到这个结论<br>因此只用看左右的值来确定中间的值，看有多少种情况即可<br>如果本来的或值是0，那么这一位只能是0<br>如果是1且旁边的值这一位是0，那么他只能是1<br>如果是1则会有两种可能，因此只用统计这种情况就行，最后的结果激素2^cnt</p>
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Root</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-10T06:36:38.000Z" class="dt-published" itemprop="datePublished">2025-07-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/virtual-participation/" rel="tag">virtual participation</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h3 id="G-Grand-Prix-of-Coffee"><a href="#G-Grand-Prix-of-Coffee" class="headerlink" title="G Grand Prix of Coffee"></a>G Grand Prix of Coffee</h3><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250710144301.png"><br>题目大意：对于原序列改变原来序列中的一个值使得任意的二进制或值都和原来相同<br>需要做出一个观察：如果想要使得原来序列值的或值都相同，只需要让他和左右的值或值保持不变即可<br>因为你不管怎么选取区间，都一定会包含和他左右的值，而其他的值又是完全一样的，故可以得到这个结论<br>因此只用看左右的值来确定中间的值，看有多少种情况即可<br>如果本来的或值是0，那么这一位只能是0<br>如果是1且旁边的值这一位是0，那么他只能是1<br>如果是1则会有两种可能，因此只用统计这种情况就行，最后的结果激素2^cnt</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define maxn 35</span><br><span class="line">int cal[maxn];</span><br><span class="line">int k;</span><br><span class="line">long long b[maxn];</span><br><span class="line">long long qpow(int x, int y) &#123;</span><br><span class="line">    long long res = 1;</span><br><span class="line">    while(y &gt; 0) &#123;</span><br><span class="line">        if(y &amp; 1) res = res * x;</span><br><span class="line">        y &gt;&gt;= 1;</span><br><span class="line">        x = x * x;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">void calc(int x, int y) &#123;</span><br><span class="line">    for(int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">        int a = (x &gt;&gt; i) &amp; 1;</span><br><span class="line">        int b = (y &gt;&gt; i) &amp; 1;</span><br><span class="line">        if(b == 0) cal[i] = 0;</span><br><span class="line">        else &#123;</span><br><span class="line">            if(a == 0) cal[i] = 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void solve() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    long long ans = 0;</span><br><span class="line">    vector&lt;int&gt; a(n + 1);</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        memset(cal, -1,sizeof(cal));</span><br><span class="line">        if(i != 1) calc(a[i - 1], a[i - 1] | a[i]);</span><br><span class="line">        if(i != n) calc(a[i + 1], a[i] | a[i + 1]);</span><br><span class="line">        long long cnt = 0;</span><br><span class="line">        for(int j = 0; j &lt; k; j++) if(cal[j] == -1) cnt++;</span><br><span class="line">        ans += b[cnt] - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    b[0] = 1;</span><br><span class="line">    for(int i = 1; i &lt;= 30; i++) b[i] = b[i - 1] * 2;</span><br><span class="line">    while(t--) solve();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="C-Colorful-Stage"><a href="#C-Colorful-Stage" class="headerlink" title="C Colorful Stage"></a>C Colorful Stage</h3><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250710150226.png"><br>思路：可以发现对于任何一个舞台来说，最终想要达到0一定是沿着某一个路径的，一条路走到底，如果走回头路必然更劣<br>因此我们把a和b数组整合一下变成(a - b + m) % m<br>对他排序然后依次枚举每一个a，发现贡献是a[i] - a[i - 1] + m，找到最大值即可</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define inf 0x3f3f3f3f</span><br><span class="line">#define int long long</span><br><span class="line">/*void solve() &#123;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    vector&lt;int&gt; a(n), b(n);</span><br><span class="line">    for(int i = 0; i &lt; n; i++) cin &gt;&gt; a[i];</span><br><span class="line">    for(int i = 0; i &lt; n; i++) cin &gt;&gt; b[i];</span><br><span class="line">    int maxpos = 0, maxneg = 0;</span><br><span class="line">    for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        if(a[i] == b[i]) continue;</span><br><span class="line">        if(a[i] &gt; b[i]) &#123;</span><br><span class="line">            int neg = a[i] - b[i], pos = m - a[i] + b[i];</span><br><span class="line">            if(neg &gt;= pos) maxpos = max(pos, maxpos);</span><br><span class="line">            else maxneg = max(neg, maxneg);</span><br><span class="line">        &#125;</span><br><span class="line">        if(a[i] &lt; b[i]) &#123;</span><br><span class="line">            int pos = b[i] - a[i], neg = m - b[i] + a[i];</span><br><span class="line">            if(pos &gt;= neg) maxneg = max(maxneg, neg);</span><br><span class="line">            else maxpos = max(pos, maxpos);</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; maxneg &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    //cout &lt;&lt; maxneg &lt;&lt; &quot; &quot; &lt;&lt; maxpos &lt;&lt; endl;</span><br><span class="line">    //cout &lt;&lt; maxneg + maxpos &lt;&lt; endl;</span><br><span class="line">&#125;*/</span><br><span class="line">//这样做会出现一个问题就是如果一个点正向操作让他反向的时候已经足够了就不用再反向操作了，所以贪心是错误的</span><br><span class="line">void solve() &#123;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    vector&lt;int&gt; a(n + 2), b(n + 2);</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i];</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; b[i];</span><br><span class="line">    vector&lt;int&gt; c(n + 2);</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) c[i] = (a[i] + m - b[i]) % m;</span><br><span class="line">    c[0] = 0, c[n + 1] = m;</span><br><span class="line">    sort(c.begin() + 1, c.end());</span><br><span class="line">    long long ans = inf;</span><br><span class="line">    for(int i = 0; i &lt;= n; i++) ans = min(ans, (c[i] - c[i + 1] + m) * 1ll);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">signed main() &#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--) solve();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;//-3 4 -4 2 1</span><br></pre></td></tr></table></figure>
-    </div>
+  </div>
 </article>
-        </main>
-        <aside class="aside">
-            <div class="close"></div>
-            <section class="aside-section">
-                
-    <h1>Categories</h1>
-
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Codeforces/">Codeforces</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Draft/">Draft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU%E7%99%BE%E9%A2%98/">HDU百题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%86%99%E9%A2%98log/">写题log</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B8%B8%E8%A7%81%E4%BC%98%E5%8C%96/">常见优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%9B%E5%AE%A2/">牛客</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">算法小结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a></li></ul>
-
-            </section>
-            <section class="aside-section">
-                
-    <h1>Archives</h1>
-
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a></li></ul>
 
 
-            </section>
-            <section class="aside-section tag">
-                
-    <h1>Tags</h1>
 
-    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp%E9%97%AE%E9%A2%98/" rel="tag">dp问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-participation/" rel="tag">virtual participation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vitual-participation/" rel="tag">vitual participation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A5%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="tag">补题记录</a></li></ul>
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-            </section>
-        </aside>
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
     </div>
-</body>
 
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#G-Grand-Prix-of-Coffee"><span class="toc-number">1.</span> <span class="toc-text">G Grand Prix of Coffee</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Colorful-Stage"><span class="toc-number">2.</span> <span class="toc-text">C Colorful Stage</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&text=2025上理校赛"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&is_video=false&description=2025上理校赛"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2025上理校赛&body=Check out this article: http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&title=2025上理校赛"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&name=2025上理校赛&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/10/2025%E4%B8%8A%E7%90%86%E6%A0%A1%E8%B5%9B/&t=2025上理校赛"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Root
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
 </html>
