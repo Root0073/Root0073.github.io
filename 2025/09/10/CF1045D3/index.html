@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="E Mexification  题目大意：给你一个数组，经过k次操作，每次操作下当前这个数会变成mex(a[1]…a[i - 1] a[i + 1]…a[n])问最终数组的和  观察之后可以发现，如果一个数组他是连续的，那么他每次操作他最大的数就会变成mex+1，再操作一次就会变回原样，这是有周期性的，于是要考虑几次操作才能变成连续的 可以发现如果数组本身就是连续的，那么不用做任何操作，如果数组是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF1045D3">
+<meta property="og:url" content="http://example.com/2025/09/10/CF1045D3/index.html">
+<meta property="og:site_name" content="Root&#39;s Space">
+<meta property="og:description" content="E Mexification  题目大意：给你一个数组，经过k次操作，每次操作下当前这个数会变成mex(a[1]…a[i - 1] a[i + 1]…a[n])问最终数组的和  观察之后可以发现，如果一个数组他是连续的，那么他每次操作他最大的数就会变成mex+1，再操作一次就会变回原样，这是有周期性的，于是要考虑几次操作才能变成连续的 可以发现如果数组本身就是连续的，那么不用做任何操作，如果数组是">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250911142909.png">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250911144721.png">
+<meta property="article:published_time" content="2025-09-10T09:18:11.000Z">
+<meta property="article:modified_time" content="2025-09-11T07:11:03.267Z">
+<meta property="article:author" content="Root">
+<meta property="article:tag" content="Codeforces">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250911142909.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/bitbug_favicon1.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/bitbug_favicon1.ico">
+        
+      
+    
+    <!-- title -->
+    <title>CF1045D3</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/09/08/2025%E7%BD%91%E7%BB%9C%E8%B5%9B/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/09/10/CF1045D3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/09/10/CF1045D3/&text=CF1045D3"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/09/10/CF1045D3/&is_video=false&description=CF1045D3"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CF1045D3&body=Check out this article: http://example.com/2025/09/10/CF1045D3/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/09/10/CF1045D3/&name=CF1045D3&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/09/10/CF1045D3/&t=CF1045D3"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Mexification"><span class="toc-number">1.</span> <span class="toc-text">E Mexification</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F-Prefix-Maximum"><span class="toc-number">2.</span> <span class="toc-text">F Prefix Maximum</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        CF1045D3
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Root</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-09-10T09:18:11.000Z" class="dt-published" itemprop="datePublished">2025-09-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Codeforces/" rel="tag">Codeforces</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="E-Mexification"><a href="#E-Mexification" class="headerlink" title="E Mexification"></a>E Mexification</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250911142909.png"></p>
+<blockquote>
+<p>题目大意：给你一个数组，经过k次操作，每次操作下当前这个数会变成mex(a[1]…a[i - 1] a[i + 1]…a[n])问最终数组的和</p>
+</blockquote>
+<p>观察之后可以发现，如果一个数组他是连续的，那么他每次操作他最大的数就会变成mex+1，再操作一次就会变回原样，这是有周期性的，于是要考虑几次操作才能变成连续的</p>
+<p>可以发现如果数组本身就是连续的，那么不用做任何操作，如果数组是断开的，那么所有大于mex或者出现次数大于一次的就会变成mex，从而变成连续的，如果数组本身是连续的且有数出现次数大于一次，那么操作一次首先会变成不符合要求的数全是mex，再操作一次就是联通的，于是数最多操作3次就会变成有规律的</p>
+<p>所以处理出操作三次的数组，最后按照要求输出即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">//0 2  0 1  </span><br><span class="line">//0 0 1 1  2 2 2 2</span><br><span class="line">//0 1 2 4 4 6 6 8  0 1 2 3 4 5 5 5   0 1 2 3 4 6 6 6</span><br><span class="line">//0 1 2 5 6  0 1 2 3 3  0 1 2 4 4  0 1 2 3 3</span><br><span class="line">//0 1 2 3 3 4 4  0 1 2 5 5 5 5 0 1 2 3 3 3 3 0 1 2 4 4 4 4 </span><br><span class="line">//1 对于比mex小的数，如果个数小于一个就是原本，如果大于就会全变成mex</span><br><span class="line">//2 对于比mex大的数，直接变成mex</span><br><span class="line">//假设这个序列是完整的那么不管怎么mex都不变</span><br><span class="line">//假设这个序列不完整，且缺少的最小的数是x，那么所有比这个数大的数都会变成x</span><br><span class="line">//所以假设出现断层，他会出现 0 1 2 ... 之后有比原先mex更大的个数的那么多个mex</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int n, k;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	vector&lt;int&gt; a(n);</span><br><span class="line">	map&lt;int, int&gt; mp;</span><br><span class="line">	for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">		cin &gt;&gt; a[i];</span><br><span class="line">		mp[a[i]]++;</span><br><span class="line">	&#125;</span><br><span class="line">	int mex = 0;</span><br><span class="line">	while(mp[mex] != 0) mex++;</span><br><span class="line">	vector&lt;int&gt; b(n);</span><br><span class="line">	map&lt;int, int&gt; mp2;</span><br><span class="line">	for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">		if(mp[a[i]] &gt; 1 || a[i] &gt; mex) b[i] = mex;</span><br><span class="line">		else b[i] = a[i];</span><br><span class="line">		mp2[b[i]]++;</span><br><span class="line">	&#125;</span><br><span class="line">	long long ans1 = 0;</span><br><span class="line">	for(int i = 0; i &lt; n; i++) ans1 += b[i];</span><br><span class="line">	if(k == 1) &#123;</span><br><span class="line">		cout &lt;&lt; ans1 &lt;&lt; endl;</span><br><span class="line">		return ;</span><br><span class="line">	&#125;</span><br><span class="line">	mex = 0;</span><br><span class="line">	while(mp2[mex] != 0) mex++;</span><br><span class="line">	vector&lt;int&gt; c(n);</span><br><span class="line">	map&lt;int, int&gt; mp3;</span><br><span class="line">	for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">		if(mp2[b[i]] &gt; 1 || b[i] &gt; mex) c[i] = mex;</span><br><span class="line">		else c[i] = b[i];</span><br><span class="line">		mp3[c[i]]++;</span><br><span class="line">	&#125;</span><br><span class="line">	long long ans2 = 0;</span><br><span class="line">	for(int i = 0; i &lt; n; i++) ans2 += c[i];</span><br><span class="line">	mex = 0;</span><br><span class="line">	while(mp3[mex] != 0) mex++;</span><br><span class="line">	vector&lt;int&gt; d(n);</span><br><span class="line">	for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">		if(mp3[c[i]] &gt; 1 || c[i] &gt; mex) d[i] = mex;</span><br><span class="line">		else d[i] = c[i];</span><br><span class="line">	&#125;</span><br><span class="line">	long long ans3 = 0;</span><br><span class="line">	for(int i = 0; i &lt; n; i++) ans3 += d[i];</span><br><span class="line">	if(k &amp; 1) cout &lt;&lt; ans3 &lt;&lt; endl;</span><br><span class="line">	else cout &lt;&lt; ans2 &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">signed main() &#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="F-Prefix-Maximum"><a href="#F-Prefix-Maximum" class="headerlink" title="F Prefix Maximum"></a>F Prefix Maximum</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250911144721.png"></p>
+<blockquote>
+<p>题目大意 给你两个数组ab，要构造出一个数组z使得z数组的前缀最大值和a数组的前缀最大值相同，问所有区间里z[i] &#x3D;&#x3D; b[i]的个数是多少</p>
+</blockquote>
+<p>由于区间数太多，一个一个枚举显然不可能，这个时候可以考虑算每一个数的贡献<br>可以观察到，如果a[i]是前缀最大值，那么此时z[i]的值固定，只有b[i] &#x3D;&#x3D; a[i]的时候才有贡献，如果不是前缀最大值，只要a[i]前面的最近的最大值大于max(a[i], b[i])那么这一位就有贡献</p>
+<p>对于情况一，我们可以单调栈处理出距离他最近的前缀最大值，那么这一位的贡献就是(i - l[i]) * (n - i + 1)分别是前面可用的数字个数和后面的数字个数，对于情况二，我们可以预处理出区间最值用st表，，然后二分得出最靠右的满足&gt;max(a[i], b[i])的情况，那么可以得到的是可选左端点的个数就是得到的那个二分值，因为在他之前的数都是可选的，右端点仍然是(n - i + 1)，贡献就是rec * (n - i + 1)，最后将这两种情况加起来合到一起就行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">//做一个思考：其实b的数值只有两种用法：要么就是a的数值重要时b的数值和a的数值一样</span><br><span class="line">//要么就是a的数值不重要时答案总能++，也就是说如果b[i] == a[i]的话a[i]的贡献就是他所在的区间数</span><br><span class="line">//怎么定义a的数值是否重要：要看这个数是否是当前最大的                                                                                                                                                                                                                                                                                                       </span><br><span class="line">//也就是说我要快速得知一个数在多少个他所在的区间内是最大值</span><br><span class="line">//单调栈</span><br><span class="line">// ██████╗  ██████╗  ██████╗ ████████╗</span><br><span class="line">// ██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝</span><br><span class="line">// ██████╔╝██║   ██║██║   ██║   ██║</span><br><span class="line">// ██╔══██╗██║   ██║██║   ██║   ██║</span><br><span class="line">// ██║  ██║╚██████╔╝╚██████╔╝   ██║</span><br><span class="line">// ╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝</span><br><span class="line">//        We&#x27;re just bad code</span><br><span class="line">#define maxn 400005</span><br><span class="line">#define int long long</span><br><span class="line">vector&lt;int&gt; log_2(maxn);</span><br><span class="line">vector&lt;vector&lt;int&gt;&gt; st(maxn, vector&lt;int&gt; (19, 0));</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	vector&lt;int&gt; a(n + 1);</span><br><span class="line">	vector&lt;int&gt; b(n + 1);</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i];</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) cin &gt;&gt; b[i];</span><br><span class="line">	auto init = [&amp;]() -&gt; void &#123;</span><br><span class="line">		for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">			st[i][0] = a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		for(int j = 1; (1 &lt;&lt; j) &lt;= n; j++) &#123;</span><br><span class="line">			for(int i = 1; i &lt;= n - (1 &lt;&lt; j) + 1; i++) &#123;</span><br><span class="line">				st[i][j] = max(st[i][j - 1], st[i + (1 &lt;&lt; j - 1)][j - 1]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	auto query = [&amp;](int a, int b) -&gt; int &#123;</span><br><span class="line">		int x = log_2[b - a + 1];</span><br><span class="line">		return max(st[a][x], st[b - (1 &lt;&lt; x) + 1][x]);</span><br><span class="line">	&#125;;</span><br><span class="line">	init();</span><br><span class="line">	long long ans = 0;</span><br><span class="line">	int top = 0;</span><br><span class="line">	vector&lt;int&gt; sta(n + 1);</span><br><span class="line">	vector&lt;int&gt; L(n + 1);</span><br><span class="line">	for(int i = n; i &gt;= 1; i--) &#123;</span><br><span class="line">		while(top &amp;&amp; a[i] &gt;= a[sta[top]]) L[sta[top]] = i, top--;</span><br><span class="line">		sta[++top] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	while(top) L[sta[top--]] = 0;</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) if(a[i] == b[i]) ans += (i - L[i]) * (n - i + 1); //当a不是新的最大前缀的时候，只有a[i] == b[i]才会产生这么多贡献</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		int l = 1, r = i - 1, rec = -1;</span><br><span class="line">		while(l &lt;= r) &#123;</span><br><span class="line">			int mid = (l + r) &gt;&gt; 1;</span><br><span class="line">			if(query(mid, i - 1) &gt;= max(a[i], b[i])) rec = mid, l = mid + 1;</span><br><span class="line">			else r = mid - 1;</span><br><span class="line">		&#125;</span><br><span class="line">		if(rec != -1) ans += rec * (n - i + 1);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		for(int j = 0; j &lt; 19; j++) &#123;</span><br><span class="line">			st[i][j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;//经典问题，不能每次开maxn的数组</span><br><span class="line">&#125;</span><br><span class="line">signed main() &#123;</span><br><span class="line">	log_2[0] = -1;</span><br><span class="line">	for(int i = 1; i &lt; maxn; i++) log_2[i] = log_2[i &gt;&gt; 1] + 1; </span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Mexification"><span class="toc-number">1.</span> <span class="toc-text">E Mexification</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F-Prefix-Maximum"><span class="toc-number">2.</span> <span class="toc-text">F Prefix Maximum</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/09/10/CF1045D3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/09/10/CF1045D3/&text=CF1045D3"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/09/10/CF1045D3/&is_video=false&description=CF1045D3"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CF1045D3&body=Check out this article: http://example.com/2025/09/10/CF1045D3/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/09/10/CF1045D3/&title=CF1045D3"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/09/10/CF1045D3/&name=CF1045D3&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/09/10/CF1045D3/&t=CF1045D3"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Root
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
