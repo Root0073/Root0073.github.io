@@ -14,11 +14,12 @@
 <meta property="og:description" content="C Jiaxun!  题目大意： 给你七个数分别代表三个人分别能做的题数和两个人都能做的题数和全都能做的题数，让你最大化做题数最少的人的题数  最大最小问题考虑二分，我们二分最少题数，在check的时候通过二进制枚举遍历每种情况，判断这种情况下能不能达到二分的最小值*人数这么多题数，如果所有情况都可以那么就增加mid，如果不行就要考虑减小mid 12345678910111213141516171">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916001517.png">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916031327.png">
 <meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916010425.png">
 <meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/a9deab5dcc891c4de9cd8294b5dca9c3.png">
 <meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/1c98079ddf9b4853846b27222b7a4f5b_720.png">
 <meta property="article:published_time" content="2025-09-15T16:09:27.000Z">
-<meta property="article:modified_time" content="2025-09-15T17:10:22.631Z">
+<meta property="article:modified_time" content="2025-09-15T19:13:59.458Z">
 <meta property="article:author" content="Root">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916001517.png">
@@ -117,7 +118,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Jiaxun"><span class="toc-number">1.</span> <span class="toc-text">C Jiaxun!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Zero"><span class="toc-number">2.</span> <span class="toc-text">E Zero</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Jiaxun"><span class="toc-number">1.</span> <span class="toc-text">C Jiaxun!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hall%E5%AE%9A%E7%90%86%E7%9A%84%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">hall定理的讲解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Zero"><span class="toc-number">2.</span> <span class="toc-text">E Zero</span></a></li></ol>
       </div>
     
   </span>
@@ -163,8 +164,9 @@
 </blockquote>
 <p>最大最小问题考虑二分，我们二分最少题数，在check的时候通过二进制枚举遍历每种情况，判断这种情况下能不能达到二分的最小值*人数这么多题数，如果所有情况都可以那么就增加mid，如果不行就要考虑减小mid</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int s;</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	vector&lt;int&gt; f(8);</span><br><span class="line">	for(int i = 1; i &lt; 8; i++) cin &gt;&gt; f[i];</span><br><span class="line">	int l = 1, r = s;</span><br><span class="line">	auto check = [&amp;](int mid) -&gt; bool &#123;</span><br><span class="line">		for(int i = 1; i &lt; 8; i++) &#123;</span><br><span class="line">			int sum = 0;</span><br><span class="line">			for(int j = 1; j &lt; 8; j++) &#123;</span><br><span class="line">				if((i &amp; j)) sum += f[j]; </span><br><span class="line">			&#125;</span><br><span class="line">			if(mid * __builtin_popcount(i) &gt; sum) return false;</span><br><span class="line">		&#125;                                                                                                                                                                                      </span><br><span class="line">		return true;</span><br><span class="line">	&#125;;</span><br><span class="line">	while(l &lt;= r) &#123;</span><br><span class="line">		int mid = (l + r) &gt;&gt; 1;</span><br><span class="line">		if(check(mid)) l = mid + 1;</span><br><span class="line">		else r = mid - 1;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; r &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这题还有网络流和hall定理的解法，待补充</p>
+<h3 id="hall定理的讲解"><a href="#hall定理的讲解" class="headerlink" title="hall定理的讲解"></a>hall定理的讲解</h3><p>给定一个目标值m，判断能否把s道题分配给3个学生使得每个学生至少得到m道题<br>可以将这个题看成一个二分图完全匹配的问题，左边是S道题，右边是对于每个学生的各m个拷贝,现在的问题就会变成是否存在一个匹配能覆盖右边的所有3m个节点<br>通过hall定理我们可以知道，只有对于任意子集属于R，相连的边数都大于等于子集的个数才能完全匹配，因此我们可以枚举I(1, 2, 3)中的所有子集，判断相连的边数是否都大于m*子集个数即可<br><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916031327.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int s, f1, f2, f3, f4, f5, f6, f7;</span><br><span class="line">	cin &gt;&gt; s &gt;&gt; f1 &gt;&gt; f2 &gt;&gt; f3 &gt;&gt; f4 &gt;&gt; f5 &gt;&gt; f6 &gt;&gt; f7;</span><br><span class="line">	int ans = min(&#123;f1 + f3 + f5 + f7, f2 + f3 + f6 + f7, f4 + f5 + f6 + f7, (s - f4) / 2, (s - f2) / 2, (s - f1) / 2, s / 3&#125;);</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">//利用hall定理</span><br><span class="line">int main() &#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这题还有网络流的解法，待补充</p>
 <h2 id="E-Zero"><a href="#E-Zero" class="headerlink" title="E Zero"></a>E Zero</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916010425.png"></p>
 <blockquote>
 <p>题目大意 你有n和m，要在0-2^m-1中选取n个数构成一个数列，使得数列的异或和为0并且相邻的元素不能相等，问有多少种情况</p>
@@ -197,7 +199,7 @@
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Jiaxun"><span class="toc-number">1.</span> <span class="toc-text">C Jiaxun!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Zero"><span class="toc-number">2.</span> <span class="toc-text">E Zero</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Jiaxun"><span class="toc-number">1.</span> <span class="toc-text">C Jiaxun!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hall%E5%AE%9A%E7%90%86%E7%9A%84%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">hall定理的讲解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Zero"><span class="toc-number">2.</span> <span class="toc-text">E Zero</span></a></li></ol>
       </div>
     
 
