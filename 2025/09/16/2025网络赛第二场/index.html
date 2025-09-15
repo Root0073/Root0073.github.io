@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="C Jiaxun!  题目大意： 给你七个数分别代表三个人分别能做的题数和两个人都能做的题数和全都能做的题数，让你最大化做题数最少的人的题数  最大最小问题考虑二分，我们二分最少题数，在check的时候通过二进制枚举遍历每种情况，判断这种情况下能不能达到二分的最小值*人数这么多题数，如果所有情况都可以那么就增加mid，如果不行就要考虑减小mid 12345678910111213141516171">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025网络赛第二场">
+<meta property="og:url" content="http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/index.html">
+<meta property="og:site_name" content="Root&#39;s Space">
+<meta property="og:description" content="C Jiaxun!  题目大意： 给你七个数分别代表三个人分别能做的题数和两个人都能做的题数和全都能做的题数，让你最大化做题数最少的人的题数  最大最小问题考虑二分，我们二分最少题数，在check的时候通过二进制枚举遍历每种情况，判断这种情况下能不能达到二分的最小值*人数这么多题数，如果所有情况都可以那么就增加mid，如果不行就要考虑减小mid 12345678910111213141516171">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916001517.png">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916010425.png">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/a9deab5dcc891c4de9cd8294b5dca9c3.png">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/1c98079ddf9b4853846b27222b7a4f5b_720.png">
+<meta property="article:published_time" content="2025-09-15T16:09:27.000Z">
+<meta property="article:modified_time" content="2025-09-15T17:10:22.631Z">
+<meta property="article:author" content="Root">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916001517.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/bitbug_favicon1.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/bitbug_favicon1.ico">
+        
+      
+    
+    <!-- title -->
+    <title>2025网络赛第二场</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/09/14/hall%E5%AE%9A%E7%90%86/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&text=2025网络赛第二场"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&is_video=false&description=2025网络赛第二场"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2025网络赛第二场&body=Check out this article: http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&name=2025网络赛第二场&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&t=2025网络赛第二场"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Jiaxun"><span class="toc-number">1.</span> <span class="toc-text">C Jiaxun!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Zero"><span class="toc-number">2.</span> <span class="toc-text">E Zero</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        2025网络赛第二场
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Root</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-09-15T16:09:27.000Z" class="dt-published" itemprop="datePublished">2025-09-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="C-Jiaxun"><a href="#C-Jiaxun" class="headerlink" title="C Jiaxun!"></a>C Jiaxun!</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916001517.png"></p>
+<blockquote>
+<p>题目大意： 给你七个数分别代表三个人分别能做的题数和两个人都能做的题数和全都能做的题数，让你最大化做题数最少的人的题数</p>
+</blockquote>
+<p>最大最小问题考虑二分，我们二分最少题数，在check的时候通过二进制枚举遍历每种情况，判断这种情况下能不能达到二分的最小值*人数这么多题数，如果所有情况都可以那么就增加mid，如果不行就要考虑减小mid</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int s;</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	vector&lt;int&gt; f(8);</span><br><span class="line">	for(int i = 1; i &lt; 8; i++) cin &gt;&gt; f[i];</span><br><span class="line">	int l = 1, r = s;</span><br><span class="line">	auto check = [&amp;](int mid) -&gt; bool &#123;</span><br><span class="line">		for(int i = 1; i &lt; 8; i++) &#123;</span><br><span class="line">			int sum = 0;</span><br><span class="line">			for(int j = 1; j &lt; 8; j++) &#123;</span><br><span class="line">				if((i &amp; j)) sum += f[j]; </span><br><span class="line">			&#125;</span><br><span class="line">			if(mid * __builtin_popcount(i) &gt; sum) return false;</span><br><span class="line">		&#125;                                                                                                                                                                                      </span><br><span class="line">		return true;</span><br><span class="line">	&#125;;</span><br><span class="line">	while(l &lt;= r) &#123;</span><br><span class="line">		int mid = (l + r) &gt;&gt; 1;</span><br><span class="line">		if(check(mid)) l = mid + 1;</span><br><span class="line">		else r = mid - 1;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; r &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这题还有网络流和hall定理的解法，待补充</p>
+<h2 id="E-Zero"><a href="#E-Zero" class="headerlink" title="E Zero"></a>E Zero</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250916010425.png"></p>
+<blockquote>
+<p>题目大意 你有n和m，要在0-2^m-1中选取n个数构成一个数列，使得数列的异或和为0并且相邻的元素不能相等，问有多少种情况</p>
+</blockquote>
+<p>推式子题，推理过程见图片<br><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/a9deab5dcc891c4de9cd8294b5dca9c3.png"><br><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/1c98079ddf9b4853846b27222b7a4f5b_720.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int mod = 998244353;</span><br><span class="line">template &lt;int MOD&gt;</span><br><span class="line">struct SMC &#123;</span><br><span class="line">    int64_t val;</span><br><span class="line">    constexpr SMC(int64_t v=0)&#123;</span><br><span class="line">        val=(v%MOD+MOD)%MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    SMC&amp; operator=(int64_t v)&#123;</span><br><span class="line">        val=(v%MOD+MOD)%MOD;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    SMC&amp; operator+=(const SMC &amp;rhs)&#123;</span><br><span class="line">        val+=rhs.val;</span><br><span class="line">        if(val&gt;=MOD) val-=MOD;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    SMC&amp; operator-=(const SMC &amp;rhs)&#123;</span><br><span class="line">        val-=rhs.val;</span><br><span class="line">        if(val&lt;0) val+=MOD;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    SMC&amp; operator*=(const SMC &amp;rhs)&#123;</span><br><span class="line">        val=1LL*val*rhs.val%MOD;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    static int64_t qpow(int64_t a,int64_t b)&#123;</span><br><span class="line">        int64_t res=1;</span><br><span class="line">        while(b)&#123;</span><br><span class="line">            if(b&amp;1) res=res*a%MOD;</span><br><span class="line">            a=a*a%MOD;</span><br><span class="line">            b&gt;&gt;=1;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    SMC pow(int64_t k) const&#123;</span><br><span class="line">        return SMC(qpow(val,k));</span><br><span class="line">    &#125;</span><br><span class="line">    SMC inv() const&#123;</span><br><span class="line">        return pow(MOD-2);</span><br><span class="line">    &#125;</span><br><span class="line">    SMC&amp; operator/=(const SMC &amp;rhs)&#123;</span><br><span class="line">        return *this*=rhs.inv();</span><br><span class="line">    &#125;</span><br><span class="line">    friend SMC operator+(SMC a,const SMC &amp;b)&#123; return a+=b;&#125;</span><br><span class="line">    friend SMC operator-(SMC a,const SMC &amp;b)&#123; return a-=b;&#125;</span><br><span class="line">    friend SMC operator*(SMC a,const SMC &amp;b)&#123; return a*=b;&#125;</span><br><span class="line">    friend SMC operator/(SMC a,const SMC &amp;b)&#123; return a/=b;&#125;</span><br><span class="line">    SMC&amp; operator++() &#123; return *this += 1; &#125;</span><br><span class="line">	SMC&amp; operator--() &#123; return *this -= 1; &#125;</span><br><span class="line">	SMC operator++(int32_t dummy) &#123; SMC t=*this; ++*this; return t; &#125;</span><br><span class="line">	SMC operator--(int32_t dummy) &#123; SMC t=*this; --*this; return t; &#125;</span><br><span class="line">    friend bool operator==(const SMC &amp;a,const SMC &amp;b)&#123; return a.val==b.val;&#125;</span><br><span class="line">	friend bool operator&lt;(const SMC &amp;a,const SMC &amp;b)&#123; return a.val&lt;b.val;&#125;</span><br><span class="line">    friend bool operator&gt;(const SMC &amp;a,const SMC &amp;b)&#123; return a.val&gt;b.val;&#125;</span><br><span class="line">    friend bool operator&lt;=(const SMC &amp;a,const SMC &amp;b)&#123; return a.val&lt;=b.val;&#125;</span><br><span class="line">    friend bool operator&gt;=(const SMC &amp;a,const SMC &amp;b)&#123; return a.val&gt;=b.val;&#125;</span><br><span class="line">    friend bool operator!=(const SMC &amp;a,const SMC &amp;b)&#123; return a.val!=b.val;&#125;</span><br><span class="line"></span><br><span class="line">    friend std::istream&amp; operator&gt;&gt;(std::istream &amp;in,SMC &amp;a)&#123;</span><br><span class="line">        int64_t v;</span><br><span class="line">        in&gt;&gt;v,a=SMC(v);</span><br><span class="line">        return in;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    friend std::ostream&amp; operator&lt;&lt;(std::ostream &amp;out,const SMC &amp;a)&#123;</span><br><span class="line">        out&lt;&lt;a.val;</span><br><span class="line">        return out;</span><br><span class="line">    &#125;</span><br><span class="line">    explicit operator long long() const&#123;</span><br><span class="line">        return val;</span><br><span class="line">    &#125;</span><br><span class="line">    SMC operator-() const&#123;</span><br><span class="line">        return SMC(-val);</span><br><span class="line">    &#125;</span><br><span class="line">	SMC&amp; operator+=(int64_t x) &#123; return *this+=SMC(x); &#125;</span><br><span class="line">	SMC&amp; operator-=(int64_t x) &#123; return *this-=SMC(x); &#125;</span><br><span class="line">	SMC&amp; operator*=(int64_t x) &#123; return *this*=SMC(x); &#125;</span><br><span class="line">	SMC&amp; operator/=(int64_t x) &#123; return *this/=SMC(x); &#125;</span><br><span class="line"></span><br><span class="line">	friend SMC operator+(SMC a, int64_t b) &#123; return a+=b; &#125;</span><br><span class="line">	friend SMC operator-(SMC a, int64_t b) &#123; return a-=b; &#125;</span><br><span class="line">	friend SMC operator*(SMC a, int64_t b) &#123; return a*=b; &#125;</span><br><span class="line">	friend SMC operator/(SMC a, int64_t b) &#123; return a/=b; &#125;</span><br><span class="line"></span><br><span class="line">	friend SMC operator+(int64_t a, SMC b) &#123; return b+a; &#125;</span><br><span class="line">	friend SMC operator-(int64_t a, SMC b) &#123; return SMC(a)-b; &#125;</span><br><span class="line">	friend SMC operator*(int64_t a, SMC b) &#123; return b*a; &#125;</span><br><span class="line">	friend SMC operator/(int64_t a, SMC b) &#123; return SMC(a)/b; &#125;</span><br><span class="line">&#125;;</span><br><span class="line">using Z=SMC&lt;mod&gt;;</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int n, m;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	Z k = Z(2).pow(m) - Z(1);</span><br><span class="line">	Z ans = k.pow(n - 1);</span><br><span class="line">	if(n % 2 == 0)&#123;</span><br><span class="line">		ans += (-k).pow(n / 2);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">signed main() &#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Jiaxun"><span class="toc-number">1.</span> <span class="toc-text">C Jiaxun!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Zero"><span class="toc-number">2.</span> <span class="toc-text">E Zero</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&text=2025网络赛第二场"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&is_video=false&description=2025网络赛第二场"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2025网络赛第二场&body=Check out this article: http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&title=2025网络赛第二场"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&name=2025网络赛第二场&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/09/16/2025%E7%BD%91%E7%BB%9C%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA/&t=2025网络赛第二场"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Root
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
