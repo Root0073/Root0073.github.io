@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="D 2x2 Erasing 2由于h和w都很小，暴搜即可暴搜要注意暴搜时的策略如果这一格时0就注意别让他执行接下来的1的操作了，一定要及时return掉或者用if-else隔开 1234567891011121314151617181920212223242526272829303132333435363738394041424344#include &lt;bits&#x2F;stdc++.h&gt;#d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ABC424">
+<meta property="og:url" content="http://example.com/2025/09/24/ABC424/index.html">
+<meta property="og:site_name" content="Root&#39;s Space">
+<meta property="og:description" content="D 2x2 Erasing 2由于h和w都很小，暴搜即可暴搜要注意暴搜时的策略如果这一格时0就注意别让他执行接下来的1的操作了，一定要及时return掉或者用if-else隔开 1234567891011121314151617181920212223242526272829303132333435363738394041424344#include &lt;bits&#x2F;stdc++.h&gt;#d">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250924002135.png">
+<meta property="og:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250924002444.png">
+<meta property="article:published_time" content="2025-09-23T16:08:24.000Z">
+<meta property="article:modified_time" content="2025-09-23T17:15:53.929Z">
+<meta property="article:author" content="Root">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250924002135.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/bitbug_favicon1.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/bitbug_favicon1.ico">
+        
+      
+    
+    <!-- title -->
+    <title>ABC424</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/09/20/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/09/24/ABC424/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/09/24/ABC424/&text=ABC424"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/09/24/ABC424/&is_video=false&description=ABC424"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ABC424&body=Check out this article: http://example.com/2025/09/24/ABC424/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/09/24/ABC424/&name=ABC424&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/09/24/ABC424/&t=ABC424"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#D-2x2-Erasing-2"><span class="toc-number">1.</span> <span class="toc-text">D 2x2 Erasing 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Cut-In-Half"><span class="toc-number">2.</span> <span class="toc-text">E Cut In Half</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        ABC424
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Root</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-09-23T16:08:24.000Z" class="dt-published" itemprop="datePublished">2025-09-24</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="D-2x2-Erasing-2"><a href="#D-2x2-Erasing-2" class="headerlink" title="D 2x2 Erasing 2"></a>D 2x2 Erasing 2</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250924002135.png"><br>由于h和w都很小，暴搜即可<br>暴搜要注意暴搜时的策略<br>如果这一格时0就注意别让他执行接下来的1的操作了，一定要及时return掉或者用if-else隔开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">#define inf 0x3f3f3f3f3f3f3f3f</span><br><span class="line">using namespace std;</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int h, w;</span><br><span class="line">	cin &gt;&gt; h &gt;&gt; w;</span><br><span class="line">	long long res = inf;</span><br><span class="line">	vector&lt;vector&lt;char&gt;&gt; a(h + 1, vector&lt;char&gt;(w + 1, 0));</span><br><span class="line">	for(int i = 1; i &lt;= h; i++) &#123;</span><br><span class="line">		string s;</span><br><span class="line">		cin &gt;&gt; s;</span><br><span class="line">		s = &quot; &quot; + s;</span><br><span class="line">		for(int j = 1; j &lt;= w; j++) &#123;</span><br><span class="line">			if(s[j] == &#x27;#&#x27;) a[i][j] = 1;</span><br><span class="line">			else a[i][j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	auto dfs = [&amp;](auto &amp;dfs, int x, int y, long long ans) &#123;</span><br><span class="line">		if(ans &gt;= res) return ;</span><br><span class="line">		if(y == w + 1) &#123;</span><br><span class="line">			y = 1;</span><br><span class="line">			x += 1;</span><br><span class="line">		&#125;</span><br><span class="line">		if(x == h + 1) &#123;</span><br><span class="line">			res = min(ans, res);</span><br><span class="line">			return ;</span><br><span class="line">		&#125;</span><br><span class="line">		if(a[x][y] == 0) return dfs(dfs, x, y + 1, ans);//这里注意用return截断掉，避免进入下面为1的判断</span><br><span class="line">		if(x == 1 || y == 1 || a[x - 1][y] != 1 || a[x][y - 1] != 1 || a[x - 1][y - 1] != 1) &#123;</span><br><span class="line">			dfs(dfs, x, y + 1, ans);</span><br><span class="line">		&#125;</span><br><span class="line">		a[x][y] = 0;</span><br><span class="line">		dfs(dfs, x ,y + 1, ans + 1);</span><br><span class="line">		a[x][y] = 1;</span><br><span class="line">	&#125;;</span><br><span class="line">	dfs(dfs, 1, 1, 0);</span><br><span class="line">	cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="E-Cut-In-Half"><a href="#E-Cut-In-Half" class="headerlink" title="E Cut In Half"></a>E Cut In Half</h2><p><img src="https://root0073-image.oss-cn-beijing.aliyuncs.com/img/20250924002444.png"><br>其实这题可以直接用pq模拟，因为每一个数产生的贡献一定是倍增的，总复杂度最高是nlogk，可过，就是要注意把相同的合成一堆</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//这么做复杂度是对的是因为你对初始任意一根棒子最多做logk次操作，总复杂度n*logk是能过的</span><br><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void solve() &#123;</span><br><span class="line">	int n, m, k;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line">	priority_queue&lt;pair&lt;double, long long&gt;&gt; pq;</span><br><span class="line">	for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">		int x;</span><br><span class="line">		cin &gt;&gt; x;</span><br><span class="line">		pq.push(&#123;x, 1&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	while(m) &#123;</span><br><span class="line">		long double x = pq.top().first;</span><br><span class="line">		long long c = pq.top().second;</span><br><span class="line">		pq.pop();</span><br><span class="line">		if(m &gt;= c) &#123;</span><br><span class="line">			m -= c;</span><br><span class="line">			pq.push(&#123;x / 2, c * 2&#125;);</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			pq.push(&#123;x, c - m&#125;);</span><br><span class="line">			pq.push(&#123;x / 2, m * 2&#125;);</span><br><span class="line">			m = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	while(!pq.empty()) &#123;</span><br><span class="line">		double x = pq.top().first;</span><br><span class="line">		long long c = pq.top().second;</span><br><span class="line">		pq.pop();</span><br><span class="line">		if(k &lt;= c) &#123;</span><br><span class="line">			cout &lt;&lt; fixed &lt;&lt; setprecision(18) &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">			break;</span><br><span class="line">		&#125;else k -= c;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这题也有二分的做法,由于排名具有单调性，是二分的舒适区间<br>将这题转化为一个问题：给定一个长度m，经过k次操作之后袋中大于m长度的棍子数目是否不小于x，二分这个m最后的答案就是枚举的mid<br>考虑贡献，如果初始的长度就小于m，那么再怎么分割都没贡献，每一根长度大于m的棍子可以拆分的数目都为log2(a_i &#x2F; m),共计可以产生2^log2(a_i &#x2F; m) - 1这么多新棍子，将所有的新棍子计数下来变为s，然后进行分类讨论</p>
+<p>如果s&gt;&#x3D;k,那么无法对所有大于m的棍子都进行操作<br>,计一开始大于m的棍子为c，总棍子数为c+k</p>
+<p>如果s&lt;k 那么所有大于m的棍子都会变为恰好大于m的 状态，这时候还需要再把剩下的k-s个操作执行完，因此还需要损失k-s个棍子，总棍子数为c+s-(k-s),然后判断棍子数能否大于等于x即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define eps 1e-9</span><br><span class="line">void solve() &#123;</span><br><span class="line">	ios::sync_with_stdio(false);</span><br><span class="line">	cin.tie(0);</span><br><span class="line">	cout.tie(0);</span><br><span class="line">	int n, k, m;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; k &gt;&gt; m;</span><br><span class="line">	vector&lt;int&gt; a(n);</span><br><span class="line">	for(int i = 0; i &lt; n; i++) cin &gt;&gt; a[i];</span><br><span class="line">	auto check = [&amp;](double mid) -&gt; bool &#123;</span><br><span class="line">		long long cnt1 = 0, cnt2 = 0;</span><br><span class="line">		for(auto i : a) &#123;</span><br><span class="line">			if(i &gt;= mid) &#123;</span><br><span class="line">				cnt1++;</span><br><span class="line">				cnt2 += (long long)(pow(2, floor(log2(i / mid))) - 1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		long long cal = 0;</span><br><span class="line">		if(k &lt;= cnt2) &#123;</span><br><span class="line">			cal = cnt1 + k;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			cal = cnt1 + cnt2 -(k - cnt2);</span><br><span class="line">		&#125;</span><br><span class="line">		return cal &gt;= m;</span><br><span class="line">	&#125;;</span><br><span class="line">	double l = 0, r = 1e9;</span><br><span class="line">	int p = 100;</span><br><span class="line">	while(p--) &#123;</span><br><span class="line">		double mid = (l + r) / 2;</span><br><span class="line">		if(check(mid)) l = mid;</span><br><span class="line">		else r = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; fixed &lt;&lt; setprecision(18) &lt;&lt; l &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--) solve();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#D-2x2-Erasing-2"><span class="toc-number">1.</span> <span class="toc-text">D 2x2 Erasing 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Cut-In-Half"><span class="toc-number">2.</span> <span class="toc-text">E Cut In Half</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/09/24/ABC424/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/09/24/ABC424/&text=ABC424"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/09/24/ABC424/&is_video=false&description=ABC424"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ABC424&body=Check out this article: http://example.com/2025/09/24/ABC424/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/09/24/ABC424/&title=ABC424"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/09/24/ABC424/&name=ABC424&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/09/24/ABC424/&t=ABC424"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Root
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
