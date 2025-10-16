@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="题目链接 题目：You are given two arrays $a$ and $b$, each of size $n$. Count the number of good subarrays $[l,r]$. A subarray $[l,r]$ is considered good if the following two conditions hold:  the length of t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="coco_count">
+<meta property="og:url" content="http://example.com/2025/10/16/coco-count/index.html">
+<meta property="og:site_name" content="Root&#39;s Space">
+<meta property="og:description" content="题目链接 题目：You are given two arrays $a$ and $b$, each of size $n$. Count the number of good subarrays $[l,r]$. A subarray $[l,r]$ is considered good if the following two conditions hold:  the length of t">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-16T13:12:48.000Z">
+<meta property="article:modified_time" content="2025-10-16T15:26:34.656Z">
+<meta property="article:author" content="Root">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/bitbug_favicon1.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/bitbug_favicon1.ico">
+        
+      
+    
+    <!-- title -->
+    <title>coco_count</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/10/08/ABC426/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/10/16/coco-count/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/10/16/coco-count/&text=coco_count"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/10/16/coco-count/&is_video=false&description=coco_count"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=coco_count&body=Check out this article: http://example.com/2025/10/16/coco-count/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/10/16/coco-count/&name=coco_count&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/10/16/coco-count/&t=coco_count"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">思路：</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        coco_count
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Root</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-10-16T13:12:48.000Z" class="dt-published" itemprop="datePublished">2025-10-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/106107/problem/B">题目链接</a></p>
+<h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>You are given two arrays $a$ and $b$, each of size $n$.</p>
+<p>Count the number of good subarrays $[l,r]$.</p>
+<p>A subarray $[l,r]$ is considered good if the following two conditions hold:</p>
+<ul>
+<li>the length of the subarray is greater than or equal to 2.</li>
+<li>$a_l$ exists in the set ${b_l, b_{l+1},\cdots, b_r}$.</li>
+<li>$a_r$ doesn’t exist in the set ${b_l, b_{l+1},\cdots, b_r}$.</li>
+</ul>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>这个题面翻译过来的意思就是要你统计所有的区间，并且这些区间要满足以下条件</p>
+<ol>
+<li>l必须要落在数组b最后一次出现a_r + 1的下标到r - 1这个区间之内</li>
+<li>r必须要大于等于最早出现a[l]的下标并且这个下标应该大于等于l</li>
+</ol>
+<p>对于每一个固定的l我们都可以求出他的nextpos[l], 意味着当r推进到这个位置时对应的l被激活，此时这个l是合法的可以纳入计算，需要注意到当一个r推进到这个位置时再推进后面的这个被激活的l依旧有效<br>所以我们只用从左到右推进这个r，每次踩到对应的位置时激活对应的l，然后算出这个r能被统计的合法区间，计算这个区间内的已经被激活的l的个数并统计进答案即可<br>对于每一个r的合法区间：右端点是r - 1， 左端点是b中最晚出现a[r]的下标的位置+1， 开一个map统计一下每一个a[r]出现的最晚位置即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n;</span><br><span class="line">#define inf 0x3f3f3f3f</span><br><span class="line">//题意：统计所有区间 这个区间[l, r]是否出现a_l并且不出现a_r</span><br><span class="line">//对于一个固定的r，l必须要落在最后一次出现a_r + 1到r-1这个区间之内</span><br><span class="line">//同时对于每一个r还必须大于等于数组b中第一个位置&gt;=l并且值等于a_l的下标</span><br><span class="line">int lowbit(int x) &#123;</span><br><span class="line">    return x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line">void solve() &#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    vector&lt;int&gt; a(n + 1), b(n + 1);</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i];</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; b[i];</span><br><span class="line">    vector&lt;int&gt; t(n + 1, 0);</span><br><span class="line">    auto add = [&amp;](int x, int y) -&gt; void&#123;</span><br><span class="line">        for(int i = x; i &lt;= n; i += lowbit(i)) &#123;</span><br><span class="line">            t[i] += y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    auto query = [&amp;](int x) -&gt; int &#123;</span><br><span class="line">        int res = 0;</span><br><span class="line">        for(int i = x; i &gt; 0; i -= lowbit(i)) &#123;</span><br><span class="line">            res += t[i];</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;;</span><br><span class="line">    unordered_map&lt;int, vector&lt;int&gt;&gt; pos;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        pos[b[i]].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; nextl(n + 1, inf);//指的是在数组b中第一个位置大于等于l并且值等于a_l的下标</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        auto it = pos.find(a[i]);</span><br><span class="line">        if(it == pos.end()) continue;</span><br><span class="line">        auto k = it -&gt; second;</span><br><span class="line">        auto p = lower_bound(k.begin(), k.end(), i);</span><br><span class="line">        if(p != k.end()) nextl[i] = *p;</span><br><span class="line">    &#125;</span><br><span class="line">    //nextl处理完毕</span><br><span class="line">	vector&lt;vector&lt;int&gt;&gt; rec(n + 1);</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		if(nextl[i] != inf) rec[nextl[i]].push_back(i);</span><br><span class="line">	&#125;</span><br><span class="line">	long long ans = 0;</span><br><span class="line">	unordered_map&lt;int, int&gt; rr;//找在b数组中每一个对应的r所合法的l要求是l必须小于r并且大于最后一次出现a[r]的下标</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		rr[b[i]] = i;</span><br><span class="line">		for(auto l : rec[i]) &#123;</span><br><span class="line">			add(l, 1);</span><br><span class="line">		&#125;</span><br><span class="line">		auto it = rr.find(a[i]);</span><br><span class="line">		int last = 0;</span><br><span class="line">		if(it != rr.end()) last = it -&gt; second;</span><br><span class="line">		if(last + 1 &lt;= i - 1) ans += query(i - 1) - query(last); </span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	cin.tie(0), cout.tie(0);</span><br><span class="line">	ios::sync_with_stdio(false);</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--) solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">思路：</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/10/16/coco-count/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/10/16/coco-count/&text=coco_count"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/10/16/coco-count/&is_video=false&description=coco_count"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=coco_count&body=Check out this article: http://example.com/2025/10/16/coco-count/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/10/16/coco-count/&title=coco_count"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/10/16/coco-count/&name=coco_count&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/10/16/coco-count/&t=coco_count"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Root
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
