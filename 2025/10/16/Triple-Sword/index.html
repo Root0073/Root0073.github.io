@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="题目链接 题目二维平面上有 N 个怪物。每个怪物都有一个与之相关的值。剑击是一种沿一条线杀死所有怪物的动作。如果你杀死一个怪物，怪物就会消失。这条线必须平行于其中一个坐标轴。计算出你可以杀死的怪物的最大数量，因为你最多可以进行三次剑击。0≤x,y≤1000000  1≤v≤7000 题目分析：横着或者竖着的配置只能是0+3或者1+2，因此我们分别枚举四种情况 对于0+3的配置就直接取前三即可，对于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Triple_Sword">
+<meta property="og:url" content="http://example.com/2025/10/16/Triple-Sword/index.html">
+<meta property="og:site_name" content="Root&#39;s Space">
+<meta property="og:description" content="题目链接 题目二维平面上有 N 个怪物。每个怪物都有一个与之相关的值。剑击是一种沿一条线杀死所有怪物的动作。如果你杀死一个怪物，怪物就会消失。这条线必须平行于其中一个坐标轴。计算出你可以杀死的怪物的最大数量，因为你最多可以进行三次剑击。0≤x,y≤1000000  1≤v≤7000 题目分析：横着或者竖着的配置只能是0+3或者1+2，因此我们分别枚举四种情况 对于0+3的配置就直接取前三即可，对于">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-16T15:31:22.000Z">
+<meta property="article:modified_time" content="2025-10-16T16:21:20.193Z">
+<meta property="article:author" content="Root">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/bitbug_favicon1.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/bitbug_favicon1.ico">
+        
+      
+    
+    <!-- title -->
+    <title>Triple_Sword</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/10/16/coco-count/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/10/16/Triple-Sword/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/10/16/Triple-Sword/&text=Triple_Sword"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/10/16/Triple-Sword/&is_video=false&description=Triple_Sword"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Triple_Sword&body=Check out this article: http://example.com/2025/10/16/Triple-Sword/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/10/16/Triple-Sword/&name=Triple_Sword&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/10/16/Triple-Sword/&t=Triple_Sword"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code"><span class="toc-number">2.</span> <span class="toc-text">code</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Triple_Sword
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Root</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-10-16T15:31:22.000Z" class="dt-published" itemprop="datePublished">2025-10-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103855/problem/D">题目链接</a></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>二维平面上有 N 个怪物。每个怪物都有一个与之相关的值。<br>剑击是一种沿一条线杀死所有怪物的动作。如果你杀死一个怪物，怪物就会消失。这条线必须平行于其中一个坐标轴。<br>计算出你可以杀死的怪物的最大数量，因为你最多可以进行三次剑击。<br>0≤x,y≤1000000  1≤v≤7000</p>
+<p>题目分析：横着或者竖着的配置只能是0+3或者1+2，因此我们分别枚举四种情况</p>
+<p>对于0+3的配置就直接取前三即可，对于1+2的配置，我们考虑用一种策略：<br>考虑单独删除某一行：之后我们需要找到最高的前两列在一行被删除之后<br>假设我们删掉的点的数量是k个，证明有收到影响的列的数量是k个，我们只用直接统计前k+2个列就行，因为若排名第k+3的列想进入前二，而最多只有k列受影响，假设每次减去这个考虑的列都往前进一名，最终也无法到达前二名，所以只用考虑前k+2列即可</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long </span><br><span class="line">#define maxn 1e6</span><br><span class="line">signed main() &#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	vector&lt;int&gt; x(n), y(n), vi(n);</span><br><span class="line">	for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">		cin &gt;&gt; x[i] &gt;&gt; y[i] &gt;&gt; vi[i];</span><br><span class="line">	&#125;</span><br><span class="line">	auto solve = [&amp;]() -&gt; int &#123;</span><br><span class="line">		vector&lt;int&gt; cnt(maxn + 1, 0);</span><br><span class="line">		for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">			cnt[y[i]] += vi[i];</span><br><span class="line">		&#125;</span><br><span class="line">		vector&lt;int&gt; o(maxn + 1);</span><br><span class="line">		iota(o.begin(), o.end(), 0);</span><br><span class="line">		sort(o.begin(), o.end(), [&amp;](int i, int j) &#123;return cnt[i] &gt; cnt[j];&#125;);</span><br><span class="line">		int ans = cnt[o[0]] + cnt[o[1]] + cnt[o[2]];</span><br><span class="line">		map&lt;int, vector&lt;int&gt;&gt; mp;</span><br><span class="line">		for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">			mp[x[i]].emplace_back(i);</span><br><span class="line">		&#125;</span><br><span class="line">		for(auto &amp;[k, v] : mp) &#123;</span><br><span class="line">			int cur = 0;</span><br><span class="line">			for(auto &amp; idx : v) &#123;</span><br><span class="line">				cur += vi[idx];</span><br><span class="line">				cnt[y[idx]] -= vi[idx];</span><br><span class="line">			&#125;</span><br><span class="line">			int v1 = 0, v2 = 0;</span><br><span class="line">			for(int i = 0; i &lt; v.size() + 2; i++) &#123;</span><br><span class="line">				int val = cnt[o[i]];</span><br><span class="line">				if(val &gt; v1) &#123;</span><br><span class="line">					swap(v1, v2);</span><br><span class="line">					v1 = val;</span><br><span class="line">				&#125;else if(val &gt; v2) &#123;</span><br><span class="line">					v2 = val;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			ans = max(ans, cur + v1 + v2);</span><br><span class="line">			for(auto &amp; idx : v) &#123;</span><br><span class="line">				cnt[y[idx]] += vi[idx];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return ans;</span><br><span class="line">	&#125;;</span><br><span class="line">	int res = solve();</span><br><span class="line">	for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">		swap(x[i], y[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	res = max(res, solve());</span><br><span class="line">	cout &lt;&lt; res &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code"><span class="toc-number">2.</span> <span class="toc-text">code</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/10/16/Triple-Sword/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/10/16/Triple-Sword/&text=Triple_Sword"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/10/16/Triple-Sword/&is_video=false&description=Triple_Sword"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Triple_Sword&body=Check out this article: http://example.com/2025/10/16/Triple-Sword/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/10/16/Triple-Sword/&title=Triple_Sword"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/10/16/Triple-Sword/&name=Triple_Sword&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/10/16/Triple-Sword/&t=Triple_Sword"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Root
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Root0073">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
